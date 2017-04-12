@@ -90,9 +90,10 @@
             UserService
                 .login(user)
                 .then(function (response) {
-                    $rootScope.currentUser = response.data[0];
+                    console.log(response);
+                    $rootScope.currentUser = response.data;
                     if(response){
-                            $location.url("/user/" + response.data[0]._id);
+                            $location.url("/user/" + response.data._id);
                         }
                         else{
                             vm.error = "User not found";
