@@ -1,30 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Project">
 <head>
     <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    <script src="project/css/jquery-3.2.0.min.js"></script>
+
+    <script src="project/css/bootstrap.min.js"></script>
+    <link href="project/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="project/css/style.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+
+    <script src="project/app.js"></script>
+    <script src="project/config.js"></script>
+
+    <script src="project/views/home/home.controller.client.js"></script>
+    <script src="project/views/user/profile.controller.client.js"></script>
+    <script src="project/views/user/profile-edit.controller.client.js"></script>
+    <script src="project/views/user/reviews.controller.client.js"></script>
+    <script src="project/views/user/review-edit.controller.client.js"></script>
+    <script src="project/views/restaurant/rest.controller.client.js"></script>
+    <script src="project/views/home/result.controller.client.js"></script>
+    <script src="project/views/user/followers.controller.client.js"></script>
+    <script src="project/views/user/admin.controller.client.js"></script>
+    <script src="project/views/guest/guest.controller.client.js"></script>
+
+
+    <script src="project/services/user.service.client.js"></script>
+    <script src="project/services/review.service.client.js"></script>
+    <script src="project/services/rest.service.client.js"></script>
+    <script src="project/services/message.service.client.js"></script>
+
+
+    <title>Project Home Page</title>
+
+
 </head>
-<body>
-    <h1>Web Dev Course Home Page</h1>
-
-    <p>
-        Customize this home page to your linking.
-    </p>
-
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/#/login">Assignment</a>
-        </li>
-        <li>
-            <a href="">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/shashikiran-gadhar/gadhar-shashikiran-webdev">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+<body >
+    <div ng-view></div>
 </body>
 </html>

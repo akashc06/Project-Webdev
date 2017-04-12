@@ -29,7 +29,7 @@ module.exports = function (mongoose, q) {
     }
 
     function findAllReviews(userId) {
-        return ReviewModel.find({user_name: userId})
+        return ReviewModel.find({user: userId})
                 }
 
     function findReviewsforRes(rid) {
