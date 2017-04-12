@@ -171,7 +171,6 @@ module.exports = function (app, userModel, z) {
             .findUserByUsername(username)
             .then(
                 function(user) {
-                    console.log(user);
                     if (!user)
                     {
                         return done(null, false);

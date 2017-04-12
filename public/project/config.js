@@ -17,8 +17,7 @@
             .when("/home/:uid",{
                 templateUrl: "views/home/result.view.client.html",
                 controller: "ResultController",
-                controllerAs: "model",
-                resolve: { loggedin: checkLoggedin }
+                controllerAs: "model"
             })
             .when("/home/:uid/:word",{
                 templateUrl: "views/home/result.view.client.html",
@@ -123,10 +122,10 @@
 
         $http.get('/api/loggedin')
             .then(function(user) {
-                user = user.data;
+                /*user = user.data;*/
+                console.log(user);
                 $rootScope.errorMessage = null;
                 if (user !== '0') {
-                    //currentUser = user;
                     deferred.resolve();
                 } else {
                     deferred.reject();

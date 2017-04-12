@@ -70,7 +70,7 @@
                             .register(newuser)
                             .success(function (newUser) {
                                 var user = newUser;
-                                $rootScope.currentUser = user;
+                                $rootScope.currentUser = newUser;
                                 $location.url("/user/" + newUser._id);
                             })
                                 .error(function () {
@@ -90,15 +90,12 @@
             UserService
                 .login(user)
                 .then(function (response) {
+                    $rootScope.currentUser = response.data[0];
                     if(response){
-                        user = response.data;
-                        if(user[0]){
-                            $rootScope.currentUser = user[0];
-                            $location.url("/user/" + user[0]._id);
+                            $location.url("/user/" + response.data[0]._id);
                         }
                         else{
                             vm.error = "User not found";
-                        }
                     }
 
                 });

@@ -73,11 +73,9 @@
                             ReviewService
                                 .createReview(vm.userID, vm.review)
                                 .success(function (newReview) {
-                                    UserService.addReview(vm.userID, newReview._id)
-                                        .success(function () {
-                                            init();
-                                            vm.review.description = ""
-                                        });
+                                    console.log(newReview);
+                                    init();
+                                    vm.review.description = ""
                                 });
                         })
 
