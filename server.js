@@ -28,6 +28,6 @@ app.use(express.static(__dirname + '/public'));
 //require("./assignment/app.js")(app);
 require("./project/app.js")(app, z);
 
-var port = process.env.PORT || 22000;
+var port = process.env.PORT || 8000;
 
 app.listen(port);

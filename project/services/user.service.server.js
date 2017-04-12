@@ -145,7 +145,7 @@ module.exports = function (app, userModel, z) {
 
     function deserializeUser(user, done) {
         userModel
-            .findUserById(user[0]._id)
+            .findUserById(user._id)
             .then(
                 function (user) {
                     done(null, user);
