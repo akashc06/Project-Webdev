@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../css/jquery-3.2.0.min.js"></script>
+
+    <script src="../../css/bootstrap.min.js"></script>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+</head>
+<body>
+
+
+<div class="row" style="background: slategray;overflow-x: hidden;overflow-y: hidden;">
+    <div class="col-md-12" style="margin-left: 300px; margin-top: 200px; margin-bottom: 200px">
+        <div class=" row visible-md visible-lg">
+            <div class="col-md-3 col-md-push-1 form-group">
+                <input class="form-control" id="city" placeholder="Zip Code or City">
+                </input>
+            </div>
+            <div class="col-md-2 col-md-push-1 form-group">
+                <a class="btn btn-success btn-block">Search</a>
+            </div>
+        </div>
+
+
+    </div>
+    <!--show for small and x-small size screen-->
+    <div class="row  visible-sm visible-xs" style="margin-left: 20px;margin-right: 30px;">
+
+        <div class="col-md-3 col-md-push-1 form-group">
+            <input ng-model="doctor.location"  class="form-control" placeholder="Zip Code or City">
+            </input>
+        </div>
+        <div class="col-md-2 col-md-push-1 form-group">
+            <a class="btn btn-success">Search</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

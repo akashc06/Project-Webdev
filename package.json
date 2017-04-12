@@ -1,0 +1,29 @@
+{
+  "name": "web-dev",
+  "version": "1.0.0",
+  "description": "Web Dev at Northeastern University",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "express-session": "^1.15.2",
+    "jquery": "1.9.1 - 3",
+    "mongoose": "^4.4.15",
+    "multer": "^1.3.0",
+    "bcrypt-nodejs": "0.0.3",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "1.0.0",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "q": "^1.4.1",
+    "zomato.js": "^1.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jose G. Annunziato",
+  "license": "ISC"
+}
