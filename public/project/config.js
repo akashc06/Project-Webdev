@@ -10,60 +10,60 @@
 
         $routeProvider
             .when("/home",{
-                templateUrl: "views/home/home.html",
+                templateUrl: "project/views/home/home.html",
                 controller: "HomeController",
                 controllerAs: "model"
             })
             .when("/home/:uid",{
-                templateUrl: "views/home/result.view.client.html",
+                templateUrl: "project/views/home/result.view.client.html",
                 controller: "ResultController",
                 controllerAs: "model"
             })
             .when("/home/:uid/:word",{
-                templateUrl: "views/home/result.view.client.html",
+                templateUrl: "project/views/home/result.view.client.html",
                 controller: "ResultController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/home/guest/search/res",{
-                templateUrl: "views/home/result.view.client.html",
+                templateUrl: "project/views/home/result.view.client.html",
                 controller: "ResultController",
                 controllerAs: "model"
             })
             .when("/home/guest/:key/search",{
-                templateUrl: "views/guest/guestpage.view.client.html",
+                templateUrl: "project/views/guest/guestpage.view.client.html",
                 controller: "GuestController",
                 controllerAs: "model"
             })
             .when("/home/guest/:key/search",{
-                templateUrl: "views/guest/guestpage.view.client.html",
+                templateUrl: "project/views/guest/guestpage.view.client.html",
                 controller: "GuestController",
                 controllerAs: "model"
             })
             .when("/home/guest//search",{
-                templateUrl: "views/guest/guestpage.view.client.html",
+                templateUrl: "project/views/guest/guestpage.view.client.html",
                 controller: "GuestController",
                 controllerAs: "model"
             })
             .when("/user/:uid/administration",{
-                templateUrl: "views/user/manage-users.client.view.html",
+                templateUrl: "project/views/user/manage-users.client.view.html",
                 controller: "AdminController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/home/guest/search/:rid",{
-                templateUrl: "views/restaurant/rest.client.view.html",
+                templateUrl: "project/views/restaurant/rest.client.view.html",
                 controller: "RestController",
                 controllerAs: "model"
             })
             .when("/home/:uid/profile/:pid",{
-                templateUrl: "views/user/profile-page.client.view.html",
+                templateUrl: "project/views/user/profile-page.client.view.html",
                 controller: "ProfileProfileController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/home/:uid/res/:rid",{
-                templateUrl: "views/restaurant/rest.client.view.html",
+                templateUrl: "project/views/restaurant/rest.client.view.html",
                 controller: "RestController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
@@ -74,30 +74,30 @@
                 controllerAs: "model"
             })*/
             .when("/user/:uid", {
-                templateUrl: "views/user/profile.client.view.html",
+                templateUrl: "project/views/user/profile.client.view.html",
                 controller: "ProfileController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/user/:uid/reviews", {
-                templateUrl: "views/user/review.client.view.html",
+                templateUrl: "project/views/user/review.client.view.html",
                 controller: "ReviewController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/user/:uid/reviews/:rid", {
-                templateUrl: "views/user/review-edit.client.view.html",
+                templateUrl: "project/views/user/review-edit.client.view.html",
                 controller: "ReviewEditController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/users", {
-                templateUrl: "views/home/user_home.client.view.html",
+                templateUrl: "project/views/home/user_home.client.view.html",
                 controller: "HomeController",
                 controllerAs: "model"
             })
             .when("/user/:uid/edit", {
-                templateUrl: "views/user/profile-edit.client.view.html",
+                templateUrl: "project/views/user/profile-edit.client.view.html",
                 controller: "ProfileEditController",
                 controllerAs: "model"
             })
@@ -108,7 +108,7 @@
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/user/:uid/following", {
-                templateUrl: "views/user/following.client.view.html"
+                templateUrl: "project/views/user/following.client.view.html"
                 /*controller: "ProfileEditController",
                  controllerAs: "model"*/
             })
