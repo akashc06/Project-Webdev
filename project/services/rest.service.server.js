@@ -5,6 +5,7 @@ module.exports = function (app, z) {
     app.get("/api/rest/:restId", findRestaurantByID);
     app.post("/api/rest/places/near/", findNearByPlaces);
     app.post("/api/rest/place/name", findPlaceByName);
+    app.post("/api/rest/place/city", findPlaceByCity);
     /*app.put("/api/review/:reviewId", updateReview);
     app.delete("/api/review/:reviewId", deleteReview);*/
 
@@ -14,6 +15,22 @@ module.exports = function (app, z) {
         z
             .search({
                 q: name
+            })
+            .then(function(data) {
+                res.json(data);
+            })
+            .catch(function(err) {
+                console.error(err);
+            });
+    }
+
+    function findPlaceByCity(req, res) {
+        var obj = req.body;
+        var city = obj.city;
+        z
+            .search({
+                entity_type: city,
+                count: 9
             })
             .then(function(data) {
                 res.json(data);

@@ -3,7 +3,7 @@
         .module("Project")
             .controller("RestController", RestController);
 
-    function RestController(UserService, RestService, ReviewService, $routeParams, $location){
+    function RestController(UserService, RestService, ReviewService, $routeParams, $location, $rootScope){
         var vm = this;
         vm.rs;
         vm.restID = $routeParams['rid'];
@@ -13,28 +13,39 @@
         vm.login = login;
         vm.getDateFormat = getDateFormat;
         vm.searchplace = searchplace;
+        vm.logout = logout;
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function(response) {
+                    $rootScope.currentUser = null;
+                    $location.url("#/home");
+                });
+        }
 
         function login(user) {
-            if(user && user.username && user.password){
-                UserService
-                    .findUserByCredentials(user.username, user.password)
-                    .then(function (response) {
-                        if(response){
-                            user = response.data;
-                            if(user[0]){
-                                //$rootScope.currentUser = user[0];
-                                $location.url("/home/" + user[0]._id + "/res/" + vm.restID);
-                            }
-                            else{
-                                vm.error = "User not found";
-                            }
+            UserService
+                .login(user)
+                .then(function (response) {
+                    if(response){
+                        $rootScope.currentUser = response.data;
+                        user = response.data;
+                        console.log(user);
+                        if(user){
+                            //console.log(user[0]);
+                            //$rootScope.currentUser = user[0];
+                            $location.url("/home/" + user._id + "/res/" + vm.restID);
                         }
+                        else{
+                            vm.error = "User not found";
+                        }
+                    }
 
-                    })
-                    .catch(function (err) {
-                        vm.error = "Invalid Username/Password";
-                    })
-            }
+                })
+                .catch(function (err) {
+                    vm.error = "Invalid Username/Password";
+                })
         }
 
         function searchplace(word) {

@@ -10,27 +10,22 @@
             </div>
         </form>
         <div class="dropdown pull-right dpdn">
-            <button class="btn btn-primary dropdown-toggle btn-group-lg"
-                    type="button" data-toggle="dropdown">Options
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#/user/{{model.userID}}">Go to profile</a></li>
-                <li><a href="#/home">Logout</a></li>
-            </ul>
+            <a class="btn btn-danger dropdown-toggle btn-group-lg"
+                    type="button" href="#/home" ng-click="model.logout()">Logout</a>
         </div>
     </div>
 </nav>
 
 
 
-<div class="container-fluid res">
+<div class="container-fluid resp">
     <div ng-if="model.places.length == 0">
         <h1 class="notfnd">
         No results found :(</h1>
     </div>
 
 
-    <div class="media respg" style="display: inline;" ng-repeat="review in model.places | filter: model.query | orderBy: '-date'">
+    <div class="media respg" ng-repeat="review in model.places | filter: model.query | orderBy: '-date'">
         <div class="col-sm-6 col-md-4 col-lg-4">
                 <div >
                     <a href="#/home/{{model.userID}}/res/{{review.R.res_id}}">
@@ -54,3 +49,12 @@
         </div>
     </div>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userID}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

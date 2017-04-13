@@ -12,18 +12,17 @@
         <div class="dropdown pull-right dpdn">
             <div ng-if="model.userID == undefined">
                 <a class="btn btn-success" style="margin-left: 10px"
-                   data-toggle="modal" data-target="#myLoginModal">Login</a>
+                   data-toggle="modal" data-target="#myLModal">Login</a>
                 <a class="btn btn-primary"
                    href="#/home">Home</a>
             </div>
+        </div>
+            <div class="dropdown pull-right dpdn">
             <div ng-if="model.userID !== undefined">
-            <button class="btn btn-primary dropdown-toggle btn-group-lg"
-                    type="button" data-toggle="dropdown">Options
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#/user/{{model.userID}}">Go to profile</a></li>
-                <li><a href="#/home">Logout</a></li>
-            </ul>
+                <button class="btn btn-danger btn-group-lg"
+                        href="#/home" ng-click="model.logout()" type="button">Logout</button>
+
+            </div>
             </div>
         </div>
     </div>
@@ -127,7 +126,7 @@
         <div class="container-fluid">
             <div class="media" ng-repeat="review in model.rs | filter: model.query | orderBy: '-date'">
                 <div class="media-left">
-                    <img src="css/images/userimg.jpeg" class="media-object" style="width:60px">
+                    <img src="project/css/images/userimg.jpeg" class="media-object" style="width:60px">
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
@@ -213,7 +212,7 @@
 
 </div>
 <div class="modal fade bs-example-modal-sm" data-backdrop="false"
-     id="myLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     id="myLModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="background-color: ghostwhite">
             <div class="modal-header">
@@ -233,12 +232,32 @@
                     <input type="password" class="form-control"
                            ng-model="model.user.password" placeholder="Password">
                 </div>
+                <a href="/api/auth/google" class="btn btn-danger btn-block">
+                    <span class="fa fa-google-plus"></span>
+                    Google
+                </a>
+                <a href="/auth/facebook" class="btn btn-primary btn-block">
+                    <span class="fa fa-facebook"></span>
+                    Facebook
+                </a>
                 <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
                 <br/>
-                <a class="forgot" href="">
+                <a class="forgot" data-toggle="modal" data-target="#myFModal" data-dismiss="modal">
                     <u>Forgot your password?</u></a>
             </div>
         </div>
     </div>
 </div>
 
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userID}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

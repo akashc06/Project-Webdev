@@ -17,7 +17,8 @@
             .when("/home/:uid",{
                 templateUrl: "project/views/home/result.view.client.html",
                 controller: "ResultController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedin: checkLoggedin }
             })
             .when("/home/:uid/:word",{
                 templateUrl: "project/views/home/result.view.client.html",
@@ -68,11 +69,6 @@
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
-            /*.when("/",{
-                templateUrl: "views/user/templates/login.view.client.html",
-                controller: "LoginController",
-                controllerAs: "model"
-            })*/
             .when("/user/:uid", {
                 templateUrl: "project/views/user/profile.client.view.html",
                 controller: "ProfileController",
@@ -91,26 +87,11 @@
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
-            .when("/users", {
-                templateUrl: "project/views/home/user_home.client.view.html",
-                controller: "HomeController",
-                controllerAs: "model"
-            })
-            .when("/user/:uid/edit", {
-                templateUrl: "project/views/user/profile-edit.client.view.html",
-                controller: "ProfileEditController",
-                controllerAs: "model"
-            })
             .when("/user/:uid/messages", {
                 templateUrl: "views/user/followers.client.view.html",
                 controller: "FollowersController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
-            })
-            .when("/user/:uid/following", {
-                templateUrl: "project/views/user/following.client.view.html"
-                /*controller: "ProfileEditController",
-                 controllerAs: "model"*/
             })
             .otherwise({
                 redirectTo: "/home"

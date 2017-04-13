@@ -3,7 +3,7 @@
         .module("Project")
         .controller("GuestController", GuestController);
 
-    function GuestController($location, RestService, UserService, $routeParams){
+    function GuestController($location, RestService, UserService, $routeParams, $rootScope){
         var vm = this;
         var initkey = $routeParams['key'];
         var nk = {name: initkey};
@@ -12,32 +12,37 @@
         vm.login = login;
         vm.searchplace = searchplace;
 
+
         function login(user) {
-            if(user && user.username && user.password){
-                UserService
-                    .findUserByCredentials(user.username, user.password)
-                    .then(function (response) {
-                        if(response){
+            UserService
+                .login(user)
+                .then(function (response) {
+                    if (response) {
+                        $rootScope.currentUser = response.data;
+                        user = response.data;
+                        console.log(user);
+                        if (response) {
                             user = response.data;
-                            if(user[0]){
-                                if(initkey){
-                                    $location.url("/home/" + user[0]._id + "/" + initkey);
+                            if (user) {
+                                if (initkey) {
+                                    $location.url("/home/" + user._id + "/" + initkey);
                                 }
                                 else {
-                                    $location.url("/home/" + user[0]._id);
+                                    $location.url("/home/" + user._id);
                                 }
                             }
-                            else{
+                            else {
                                 vm.error = "User not found";
                             }
                         }
-
-                    })
+                    }
+                })
                     .catch(function (err) {
                         vm.error = "Invalid Username/Password";
                     })
-            }
         }
+
+
 
 
         function searchplace(word) {

@@ -43,17 +43,25 @@
                     </input>
                 </div>
                 <div class="col-md-2 col-md-push-1 form-group">
+                    <a ng-click="model.getLocation()" title="Locate me" style="margin-left: -90px;width: 100px">
+                        <span class="glyphicon glyphicon-map-marker" style="font-size: 30px; color: crimson"></span>
+                    </a>
                     <button class="btn btn-danger btn-block"  data-toggle="modal" data-target="#myNModal"
-                            type="submit" style="width: 100px;margin-left: 450px" ng-click="model.sendKey(model.key)">Search</button>
+                            type="submit"
+                            style="width: 100px;margin-left: 450px;margin-top: -38px"
+                            ng-click="model.testt(model.key, model.city)">Search</button>
                 </div>
             </form>
 
 
         </div>
         <!--show for small and x-small size screen-->
-        <div class="row  visible-sm visible-xs" style="margin-left: -300px;margin-right: 30px;">
+        <div class="row  visible-sm visible-xs" style="margin-left: -300px;margin-right: 30px;margin-top: -50px">
 
             <div class="col-md-3 col-md-push-1 form-group">
+                <a ng-click="model.getLocation()" title="Locate me">
+                    <span class="glyphicon glyphicon-map-marker" style="font-size: 30px; color: crimson"></span>
+                </a>
                 <input ng-model="doctor.location"  class="form-control" style="width: 200px" placeholder="Restaurant name">
                 </input>
             </div>
@@ -65,9 +73,9 @@
 
 
     <div class="container-fluid" style="background-color: ghostwhite">
-        <h1>Around you</h1>
+        <h1>{{model.tosay}}</h1>
         <div class="container-fluid res">
-            <div class="media respg" style="display: inline;"
+            <div class="media respg"
                  ng-repeat="review in model.cats ">
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div >
