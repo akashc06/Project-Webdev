@@ -14,9 +14,9 @@ module.exports = function (app, z) {
         var name = obj.name;
         z
             .search({
-                q: name,
+                q: name/*,
                 lat: 42.3329230,
-                lon: -71.1062260
+                lon: -71.1062260*/
             })
             .then(function(data) {
                 res.json(data);
