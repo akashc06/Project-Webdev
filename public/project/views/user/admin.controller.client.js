@@ -79,12 +79,23 @@
                 UserService
                     .deleteUser(ID)
                     .success(function () {
-                        init();
+                        ReviewService
+                            .deleteReviewsforUser(ID)
+                            .success(function (status) {
+                                MessageService
+                                    .deleteMessagesforUser(ID)
+                                    .success(function (status) {
+                                        init();
+                                    });
+
+                            });
                     })
             }
         }
 
-        function view(ID) {
+        function view(ID, name) {
+            vm.by = name;
+
             ReviewService
                 .findAllReviews(ID)
                 .success(function (reviews) {

@@ -75,6 +75,9 @@
     <div class="container-fluid" style="background-color: ghostwhite">
         <h1>{{model.tosay}}</h1>
         <div class="container-fluid res">
+            <div class="alert alert-dismissable alert-danger" ng-show="model.uerror">
+                {{model.display}}
+            </div>
             <div class="media respg"
                  ng-repeat="review in model.cats ">
                 <div class="col-sm-6 col-md-4 col-lg-4">
@@ -114,8 +117,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="background-color: ghostwhite">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" ng-click="model.eraseData()"
+                        data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" >&times;</span></button>
                 <h2 class="modal-title">Please login to continue</h2>
             </div>
             <div class="modal-body container-fluid">
@@ -127,11 +131,11 @@
                     <input type="password" class="form-control"
                            ng-model="model.user.password" placeholder="Password">
                 </div>
+                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
                 <a href="/api/auth/facebook" class="btn btn-primary btn-block">
                     <span class="fa fa-facebook"></span>
                     Facebook
                 </a>
-                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
             </div>
             <div class="modal-footer">
                 <a class="btn btn-info btn-block" href="#/home/guest/{{model.key}}/search">
@@ -149,7 +153,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="background-color: ghostwhite">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" ng-click="model.eraseData()"
+                        class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 <h2 class="modal-title" id="myModalLabel">Login to your account</h2>
                 <div class="alert alert-dismissable alert-danger" ng-show="model.error">
@@ -165,11 +170,11 @@
                     <input type="password" class="form-control"
                            ng-model="model.user.password" placeholder="Password">
                 </div>
+                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
                 <a href="/api/auth/facebook" class="btn btn-primary btn-block">
                     <span class="fa fa-facebook"></span>
                     Facebook
                 </a>
-                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
             </div>
         </div>
     </div>
@@ -180,7 +185,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="background-color: ghostwhite">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" ng-click="model.eraseData()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title" style="margin-left: 180px" id="regModalLabel">Not a member yet?</h3>
                 <div class="alert alert-dismissable alert-danger" ng-show="model.uerror">

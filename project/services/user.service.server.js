@@ -65,6 +65,7 @@ module.exports = function (app, userModel, z) {
                             username:  emailParts[0],
                             firstName: profile.name.givenName,
                             lastName:  profile.name.familyName,
+                            type: "user",
                             email:    email,
                             facebook: {
                                 id:    profile.id,

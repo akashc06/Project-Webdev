@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="dropdown pull-right hidden-xs hidden-sm">
-            <a href="#/home" class="btn btn-danger" type="button" data-toggle="dropdown">Logout
+            <a ng-click="model.logout()" class="btn btn-danger" type="button" data-toggle="dropdown">Logout
             </a></div>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -45,9 +45,10 @@
         <div class="media" ng-repeat="sms in model.messages | filter: model.query | orderBy: '-date'">
             <div class="panel panel-info">
                 <div class="panel-heading">{{sms.from}} says :
-                <div class="pull-right">
+                <div class="pull-right" style="margin-top: -6px">
                     <a class="btn btn-danger" ng-click="model.deleteMessage(sms._id)">delete</a>
-                    <a class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="model.sendinfo(sms.from_id)" >reply</a>
+                    <a class="btn btn-info" data-toggle="modal" data-target="#myModal"
+                       ng-click="model.sendinfo(sms.from_id, sms.from)" >reply</a>
                 </div>
                 </div>
                 <div class="panel-body"> {{sms.message}}</div>
@@ -75,7 +76,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <div class="reviewtitle">
-                        <h4 class="modal-title">Get in touch with {{model.uname}}</h4>
+                        <h4 class="modal-title">Reply to {{model.replyto}}</h4>
                     </div>
                 </div>
                 <div class="modal-body">

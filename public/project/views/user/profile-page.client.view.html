@@ -16,16 +16,11 @@
             </div>
 
             <div class="navbar-text pull-right" >
-                <div class="dropdown pull-right dpdn-pr">
-                    <button class="btn btn-primary dropdown-toggle btn-group-lg"
-                            type="button" data-toggle="dropdown">Options
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#/user/{{model.userID}}/reviews">My Reviews</a></li>
-                        <li><a href="#/user/{{model.userID}}/messages">My Messages</a></li>
-                        <li><a href="#/user/{{model.userID}}">My Profile</a></li>
-                        <li><a href="#/home">Logout</a></li>
-                    </ul>
+                <div class="dropdown pull-right dpdn">
+                        <button class="btn btn-danger btn-group-lg"
+                                href="#/home" ng-click="model.logout()" type="button">Logout</button>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,7 +29,7 @@
 <div class="container-fluid pgectr">
 <div class="container-fluid">
     <div class="col-xs-4">
-        <img class="image profileimage" src="css/images/pexels-photo-70497.jpeg">
+        <img class="image profileimage" src="project/css/images/userimg.jpeg">
     </div>
 
     <div class="col-xs-8 profileinfo">
@@ -85,7 +80,7 @@
     </div>
 
 </div>
-    <div class="container ">
+    <div class="container msgpn">
     <div class="col-xs-4">
         <img data-toggle="modal" data-target="#myModal" class="img-circle profilebtns-3" src="project/css/images/msg.png" alt="Message"/>
         <h2 class="profilebtns-1">Message</h2>
@@ -140,7 +135,7 @@
 
 
 <div class="container">
-    <div class="modal fade" id="myRModal" role="dialog">
+    <div class="modal fade" id="myRModal" role="dialog" data-backdrop="false">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -156,7 +151,7 @@
                             <img src="project/css/images/cake.jpeg" class="media-object" style="width:60px">
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading">{{review.placeID}}
+                             <h4 class="media-heading"><a href="#/home/{{model.userID}}/res/{{review.placeID}}">{{review.place}}</a>
                                 <small><i>Posted on {{model.getDateFormat(review.date)|date:'MM-dd-yyyy'}}</i></small></h4>
                             <p>{{review.description}}</p>
                         </div>
@@ -174,3 +169,13 @@
     </div>
 
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userID}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

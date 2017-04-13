@@ -3,7 +3,7 @@
         .module("Project")
         .controller("FollowersController", FollowersController);
 
-    function FollowersController(UserService, MessageService, $routeParams, $location){
+    function FollowersController(UserService, MessageService, $routeParams, $location, $rootScope){
         var vm = this;
         vm.admin = "admin";
         vm.userID = $routeParams['uid'];
@@ -14,10 +14,21 @@
         vm.deleteMessage = deleteMessage;
         vm.reply = reply;
         vm.sendinfo = sendinfo;
+        vm.logout = logout;
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function(response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/home");
+                });
+        }
 
 
-        function sendinfo(id) {
+        function sendinfo(id, from) {
             vm.to_id = id;
+            vm.replyto = from;
         }
 
         function reply(message) {
@@ -31,6 +42,7 @@
                         .findUserById(vm.to_id)
                         .success(function (data) {
                             vm.thisuser = data;
+                            vm.uname = vm.thisuser.username;
                             var newmessage = {
                                 from: vm.sender,
                                 from_id: vm.sendid,

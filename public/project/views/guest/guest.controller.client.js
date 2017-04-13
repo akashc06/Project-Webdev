@@ -44,15 +44,12 @@
 
 
 
-        function searchplace(word, city) {
-            var key = {name: word, city: city};
+        function searchplace(word) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var latitude = position.coords.latitude;
                 var longitude = position.coords.longitude;
                 console.log(latitude + "  " + longitude);
             });
-
-
             RestService
                 .getLocation(key)
                 .success(function (locatio) {

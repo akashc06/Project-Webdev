@@ -5,8 +5,7 @@
                 <input type="text" ng-model="model.keyword" class="search-query form-control" placeholder="Search" />
             </div>
             <div class="col-xs-2 fsbtn" >
-                <input type="text" ng-model="model.city" class="search-query" placeholder="City" />
-                <button class="btn btn-danger" type="submit" ng-click="model.searchplace(model.keyword, model.city)">
+                <button class="btn btn-danger" type="submit" ng-click="model.searchplace(model.keyword)">
                     <span class=" glyphicon glyphicon-search"></span></button>
             </div>
         </form>
@@ -33,20 +32,19 @@
     <div class="media respg" ng-repeat="review in model.places | filter: model.query | orderBy: '-date'">
         <div class="col-sm-6 col-md-4 col-lg-4">
             <div >
-                
                 <a href="#/home/guest/search/{{review.R.res_id}}">
                     <div>
                         <div ng-if="review.featured_image.length !== 0">
                             <img ng-src="{{review.featured_image}}" alt="Food" class="img-rounded" width="304" height="236">
                         </div>
                         <div ng-if="review.featured_image.length == 0">
-                            <img src="css/images/restaurants-default.jpg" alt="Food" class="img-rounded" width="304" height="236">
+                            <img src="project/css/images/restaurants-default.jpg" alt="Food" class="img-rounded" width="304" height="236">
                         </div>
                     </div>
                 </a>
             </div>
             <div class="caption">
-                <h3>{{review.R.res_id}}</h3>
+                <h3>{{review.name}}</h3>
                 <h5>{{review.location.locality}}, {{review.location.city}}</h5>
                 <h5><b>Cuisines :</b> {{review.cuisines}}</h5>
                 <br/>
@@ -76,11 +74,11 @@
                     <input type="password" class="form-control"
                            ng-model="model.user.password" placeholder="Password">
                 </div>
+                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
                 <a href="/api/auth/facebook" class="btn btn-primary btn-block">
                     <span class="fa fa-facebook"></span>
                     Facebook
                 </a>
-                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
             </div>
         </div>
     </div>

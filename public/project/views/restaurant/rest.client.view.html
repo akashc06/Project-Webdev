@@ -28,7 +28,7 @@
     </div>
 </nav>
 
-<div class="container-fluid" style="overflow-x: hidden">
+<div class="container-fluid" style="overflow-x: hidden;margin-top: 50px">
     <div class="panel-body">
     <div class="container-fluid">
         <div class="col-xs-4 pull-left">
@@ -39,13 +39,16 @@
             </div>
             <div ng-if="model.pic == []">
                 <img class="img-responsive restimg"
-                     ng-src="css/images/restaurants-default.jpg"/>
+                     ng-src="project/css/images/restaurants-default.jpg"/>
             </div>
         </div>
         <!--<img class="img-responsive restimg"
              ng-src="{{model.details.featured_image}}"/>-->
 
         <h2>Click <a href="{{model.details.photos_url}}">here</a> for more images</h2>
+        </div>
+
+        <div>
         <div class="panel panel-default textpt col-xs-4">
             <div class="panel-heading ">
                 <div class="resname"><h1>{{model.details.name}}</h1></div>
@@ -110,7 +113,8 @@
     <div class="panel-heading" style="background-color: lightsteelblue">
         <h3 >User reviews:</h3>
         <div ng-if="model.userID == undefined">
-            <button disabled type="button" style="margin-top: -50px" class="hidden-xs btn btn-info btn-lg pull-right"
+            <button disabled title="Login to review"
+                    type="button" style="margin-top: -50px" class="hidden-xs btn btn-info btn-lg pull-right"
                     data-toggle="modal" data-target="#myModal">ReviewME</button>
         </div>
         <div ng-if="model.userID !== undefined">
@@ -130,14 +134,11 @@
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
-                        <div ng-if="model.userID !== undefined">
+                        <div ng-if="model.userID !== undefined && model.userID !== review.user">
                             <a href="#/home/{{model.userID}}/profile/{{review.user}}">{{review.user_name}} </a>
                         </div>
-                        <div ng-if="model.userID == undefined">
-                            {{review.username}}
-                        </div>
-                        <div ng-if="model.userID == review.user">
-                            {{review.username}}
+                        <div ng-if="model.userID == undefined || model.userID == review.user">
+                            {{review.user_name}}
                         </div>
                         <small class="hidden-xs"><i>Posted on {{model.getDateFormat(review.date)|date:'MM-dd-yyyy'}}</i></small></h4>
                             {{review.description}}
@@ -246,11 +247,11 @@
                     <input type="password" class="form-control"
                            ng-model="model.user.password" placeholder="Password">
                 </div>
+                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
                 <a href="/api/auth/facebook" class="btn btn-primary btn-block">
                     <span class="fa fa-facebook"></span>
                     Facebook
                 </a>
-                <a class="btn btn-success btn-block" ng-click="model.login(model.user)">Login</a>
             </div>
         </div>
     </div>

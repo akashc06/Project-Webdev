@@ -65,7 +65,7 @@
                 <td>{{user.lastname}}</td>
                 <td>{{user.type}}</td>
                 <td><a data-toggle="modal" data-target="#myRModal"
-                       ng-click="model.view(user._id)" title="View reviews">
+                       ng-click="model.view(user._id, user.username)" title="View reviews">
                     <span class="glyphicon glyphicon-comment usergly"></span></a>
                 <a  ng-click="model.details(user._id, user.username)" title="Message user" data-toggle="modal" data-target="#myModal">
                     <span class="glyphicon glyphicon-envelope usergly"></span></a>
@@ -76,14 +76,14 @@
 </div>
 
 <div class="container">
-    <div class="modal fade" id="myRModal" role="dialog">
+    <div class="modal fade" id="myRModal" role="dialog" data-backdrop="false">
         <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="reviewtitle">
-                        <h4 class="modal-title">Reviews</h4>
+                        <h4 class="modal-title">Reviews by {{model.by}}</h4>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -95,7 +95,8 @@
                             <img src="project/css/images/cake.jpeg" class="media-object" style="width:60px">
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading">{{review.placeID}}
+                            <h4 class="media-heading">
+                                <a href="#home/{{model.userID}}/res/{{review.placeID}}"> {{review.place}} </a>
                                 <small><i>Posted on {{model.getDateFormat(review.date)|date:'MM-dd-yyyy'}}</i></small></h4>
                             <p>{{review.description}}</p>
                         </div>

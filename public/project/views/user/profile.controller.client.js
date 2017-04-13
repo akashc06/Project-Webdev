@@ -70,7 +70,7 @@
         init();
     }
 
-    function ProfileProfileController(UserService, $routeParams, ReviewService, MessageService){
+    function ProfileProfileController(UserService, $routeParams, ReviewService, MessageService, $rootScope, $location){
         var vm = this;
         vm.pID = $routeParams['pid'];
         vm.userID = $routeParams['uid'];
@@ -80,6 +80,16 @@
 
         vm.postmessage = postmessage;
         vm.getDateFormat = getDateFormat;
+        vm.logout = logout;
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function(response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/home");
+                });
+        }
 
 
 

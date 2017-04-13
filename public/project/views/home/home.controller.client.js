@@ -14,6 +14,11 @@
         vm.sendKey  = sendKey;
         vm.forgot =forgot;
         vm.getLocation = getLocation;
+        vm.eraseData = eraseData;
+
+        function eraseData() {
+            vm.user = "";
+        }
 
         function getLocation() {
             if (navigator.geolocation) {
@@ -28,8 +33,12 @@
             RestService
                 .findAllCategories(a)
                 .success(function (data) {
+                    if(data.length == 0) {
+                        vm.display = "Please enable location services";
+                    }else {
                     vm.cats = data;
                     vm.pic = vm.cats.featured_image;
+                    }
                 });
         }
 
@@ -97,6 +106,7 @@
                 }
                 else {
                     vm.uerror = "Passowrds do not match";
+                    vm.user = "";
                 }
             }else {
                 vm.uerror = "Enter Username";
@@ -107,8 +117,8 @@
             UserService
                 .login(user)
                 .then(function (response) {
-                    console.log(response);
                     $rootScope.currentUser = response.data;
+                    console.log(response);
                     if(response) {
                         if (vm.key) {
                             $location.url("/home/" + response.data._id + "/" + vm.key);
@@ -121,7 +131,9 @@
                             vm.error = "User not found";
                     }
 
-                });
+                },function (err) {
+                    vm.error = "User not found";
+                })
 
         }
     }
