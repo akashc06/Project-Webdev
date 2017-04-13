@@ -32,11 +32,22 @@
         }
 
         function init() {
-            RestService
-                .findPlaceByName(skey)
-                .success(function (data) {
-                    vm.places = data;
-                })
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            function showPosition(position) {
+                vm.Lat = position.coords.latitude;
+                vm.Lon = position.coords.longitude;
+                var nkey = {"name": initkey,
+                    "lat" : vm.Lat,
+                    "lon" : vm.Lon};
+                RestService
+                    .findPlaceByName(nkey)
+                    .success(function (data) {
+                        vm.places = data;
+                    })
+            }
+
         }
         init();
 

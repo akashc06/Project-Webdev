@@ -91,7 +91,7 @@
                             vm.uerror = "Username already taken";
                         })
                         .error(function () {
-                            newuser.type = "admin";
+                            newuser.type = "user";
                             UserService
                             .register(newuser)
                             .success(function (newUser) {
