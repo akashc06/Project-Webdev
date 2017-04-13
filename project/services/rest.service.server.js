@@ -15,7 +15,8 @@ module.exports = function (app, z) {
         z
             .search({
                 q: name,
-                entity_type: "Boston"
+                lat: 42.3329230,
+                lon: -71.1062260
             })
             .then(function(data) {
                 res.json(data);
