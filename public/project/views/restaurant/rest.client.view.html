@@ -162,7 +162,21 @@
     <div class="container-fluid nblst">
         <div class="media respg" ng-repeat="review in model.nearby | filter: model.query | orderBy: '-date'">
             <div class="col-sm-6 col-md-4 col-lg-4">
-                <div >
+                <div ng-if="model.userID == undefined">
+                    <a href="#/home/guest/search/{{review.R.res_id}}">
+                        <div>
+                            <div ng-if="review.featured_image.length !== 0">
+                                <img ng-src="{{review.featured_image}}" alt="Food" class="img-rounded" width="304" height="236">
+                            </div>
+                            <div ng-if="review.featured_image.length == 0">
+                                <img src="project/css/images/restaurants-default.jpg" alt="Food" class="img-rounded" width="304" height="236">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div ng-if="model.userID !== undefined">
                     <a href="#/home/{{model.userID}}/res/{{review.R.res_id}}">
                         <div>
                             <div ng-if="review.featured_image.length !== 0">

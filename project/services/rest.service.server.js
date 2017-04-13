@@ -77,8 +77,7 @@ module.exports = function (app, z) {
             .search({
                 lat: loc.latitude,
                 lon: loc.longitude,
-                count: 6,
-                start:3
+                start:1
             })
             .then(function(data) {
                 res.send(data);

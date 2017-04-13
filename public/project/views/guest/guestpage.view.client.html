@@ -33,6 +33,7 @@
     <div class="media respg" ng-repeat="review in model.places | filter: model.query | orderBy: '-date'">
         <div class="col-sm-6 col-md-4 col-lg-4">
             <div >
+                
                 <a href="#/home/guest/search/{{review.R.res_id}}">
                     <div>
                         <div ng-if="review.featured_image.length !== 0">
@@ -45,7 +46,7 @@
                 </a>
             </div>
             <div class="caption">
-                <h3>{{review.name}}</h3>
+                <h3>{{review.R.res_id}}</h3>
                 <h5>{{review.location.locality}}, {{review.location.city}}</h5>
                 <h5><b>Cuisines :</b> {{review.cuisines}}</h5>
                 <br/>
