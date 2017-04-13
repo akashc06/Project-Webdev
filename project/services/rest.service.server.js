@@ -14,7 +14,8 @@ module.exports = function (app, z) {
         var name = obj.name;
         z
             .search({
-                q: name
+                q: name,
+                entity_type: "Boston"
             })
             .then(function(data) {
                 res.json(data);
