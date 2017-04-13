@@ -1,13 +1,24 @@
 
 module.exports = function (app, z) {
 
+    var locapi = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+    var location = "Boston,+MA";
+    var key =  "&key=AIzaSyC89pv2EHlwGL9eio5DFM_FMRIhoLz9s8Q";
     app.post("/api/rest/categories/near/", findAllCategories);
     app.get("/api/rest/:restId", findRestaurantByID);
     app.post("/api/rest/places/near/", findNearByPlaces);
     app.post("/api/rest/place/name", findPlaceByName);
     app.post("/api/rest/place/city", findPlaceByCity);
+    app.post("/api/rest/location", getLocation);
     /*app.put("/api/review/:reviewId", updateReview);
     app.delete("/api/review/:reviewId", deleteReview);*/
+
+
+    function getLocation(req, res) {
+        var obj = req.body;
+        var city = obj.city;
+        return http.get()
+    }
 
     function findPlaceByName(req, res) {
         var obj = req.body;

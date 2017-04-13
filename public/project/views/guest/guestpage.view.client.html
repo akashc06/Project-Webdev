@@ -5,7 +5,8 @@
                 <input type="text" ng-model="model.keyword" class="search-query form-control" placeholder="Search" />
             </div>
             <div class="col-xs-2 fsbtn" >
-                <button class="btn btn-danger" type="submit" ng-click="model.searchplace(model.keyword)">
+                <input type="text" ng-model="model.city" class="search-query" placeholder="City" />
+                <button class="btn btn-danger" type="submit" ng-click="model.searchplace(model.keyword, model.city)">
                     <span class=" glyphicon glyphicon-search"></span></button>
             </div>
         </form>

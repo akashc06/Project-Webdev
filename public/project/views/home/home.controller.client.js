@@ -63,6 +63,7 @@
 
 
         function init() {
+            getLocation();
             var city = {city: vm.city};
             RestService
                 .findPlaceByCity(city)

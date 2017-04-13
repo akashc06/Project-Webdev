@@ -3,7 +3,7 @@
         .module("Project")
         .controller("GuestController", GuestController);
 
-    function GuestController($location, RestService, UserService, $routeParams, $rootScope){
+    function GuestController($location, RestService, UserService, $routeParams, $rootScope, $http){
         var vm = this;
         var initkey = $routeParams['key'];
         var nk = {name: initkey};
@@ -45,8 +45,20 @@
 
 
 
-        function searchplace(word) {
-            var key = {name: word};
+        function searchplace(word, city) {
+            var key = {name: word, city: city};
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                console.log(latitude + "  " + longitude);
+            });
+
+
+            RestService
+                .getLocation(key)
+                .success(function (locatio) {
+                    console.log(locatio.results[0].geometry.location)
+                });
             RestService
                 .findPlaceByName(key)
                 .success(function (data) {

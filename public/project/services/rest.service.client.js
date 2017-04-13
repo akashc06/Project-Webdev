@@ -11,7 +11,8 @@
             "findNearByPlaces" : findNearByPlaces,
             "getCity": getCity,
             "findPlaceByName" : findPlaceByName,
-            "findPlaceByCity" : findPlaceByCity
+            "findPlaceByCity" : findPlaceByCity,
+            "getLocation" : getLocation
         };
         return api;
 
@@ -40,6 +41,11 @@
 
         function findPlaceByCity(city) {
             return $http.post("/api/rest/place/city",city);
+        }
+
+        function getLocation(loc) {
+            return $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=mysore&key=AIzaSyC89pv2EHlwGL9eio5DFM_FMRIhoLz9s8Q");
+            //return $http.post("/api/rest/location",loc);
         }
 
     }
