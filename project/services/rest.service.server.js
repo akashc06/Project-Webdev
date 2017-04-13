@@ -28,15 +28,12 @@ module.exports = function (app, z) {
         var obj = req.body;
         var city = obj.city;
         z
-            .search({
-                entity_type: city,
-                count: 9
-            })
+            .search()
             .then(function(data) {
                 res.json(data);
             })
             .catch(function(err) {
-                console.error(err);
+                res.json(err);
             });
     }
 

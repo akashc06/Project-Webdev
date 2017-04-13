@@ -13,7 +13,6 @@
         vm.restsearch = restsearch;
         vm.sendKey  = sendKey;
         vm.forgot =forgot;
-        vm.refresh = refresh;
         vm.getLocation = getLocation;
 
         function getLocation() {
@@ -31,15 +30,6 @@
             a = {lati: vm.Lat, lngi: vm.Lon};
             RestService
                 .findAllCategories(a)
-                .success(function (data) {
-                    vm.cats = data;
-                    vm.pic = vm.cats.featured_image;
-                });
-        }
-
-        function refresh(city) {
-            RestService
-                .findPlaceByCity(city)
                 .success(function (data) {
                     vm.cats = data;
                     vm.pic = vm.cats.featured_image;
@@ -73,23 +63,15 @@
 
 
         function init() {
-            if (navigator.geolocation) {
-                var a;
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    vm.lat = position.coords.latitude;
-                    //console.log(vm.lat);
-                    vm.long = position.coords.longitude;
-                    a = {lati: vm.lat, lngi: vm.long};
-                    RestService
-                        .findPlaceByCity(city)
-                        .success(function (data) {
-                            vm.cats = data;
-                            vm.pic = vm.cats.featured_image;
-                        });
-
-
+            var city = {city: vm.city};
+            RestService
+                .findPlaceByCity(city)
+                .success(function (data) {
+                    vm.cats = data;
+                    console.log(vm.cats);
+                    vm.pic = vm.cats.featured_image;
                 });
-            }
+
         }
         init();
 
