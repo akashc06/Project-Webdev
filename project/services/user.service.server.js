@@ -34,12 +34,12 @@ module.exports = function (app, userModel, z) {
     app.post('/api/logout', logout);
     app.get('/api/loggedin', loggedin);
 
-    app.get("/auth/facebook", passport.authenticate('facebook', { scope : 'email' }));
+    app.get("/api/auth/facebook", passport.authenticate('facebook', { scope : 'email' }));
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
             failureRedirect: '/'
         }), function (req, res) {
-            res.redirect('/project/#/user/' + req.user._id);
+            res.redirect('/#/user/' + req.user._id);
         });
 
     function loggedin(req, res) {

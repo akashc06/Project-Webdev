@@ -88,7 +88,7 @@
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/user/:uid/messages", {
-                templateUrl: "views/user/followers.client.view.html",
+                templateUrl: "project/views/user/followers.client.view.html",
                 controller: "FollowersController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
