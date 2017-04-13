@@ -23,11 +23,13 @@ module.exports = function (app, z) {
     function findPlaceByName(req, res) {
         var obj = req.body;
         var name = obj.name;
+        var lat = obj.lat;
+        var lon = obj.lon;
         z
             .search({
                 q: name,
-                lat: 42.3329230,
-                lon: -71.1062260
+                lat: lat,
+                lon: lon
             })
             .then(function(data) {
                 res.json(data);

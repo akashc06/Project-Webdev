@@ -7,7 +7,7 @@
         var vm = this;
 
         vm.city = "Boston";
-        vm.tosay = "Round the globe";
+        vm.tosay = "Around you,";
         vm.login = login;
         vm.register = register;
         vm.restsearch = restsearch;
@@ -18,13 +18,10 @@
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
             }
         }
 
         function showPosition(position) {
-            vm.tosay = "Around you";
             vm.Lat = position.coords.latitude;
             vm.Lon = position.coords.longitude;
             a = {lati: vm.Lat, lngi: vm.Lon};
@@ -64,14 +61,14 @@
 
         function init() {
             getLocation();
-            var city = {city: vm.city};
+            /*var city = {city: vm.city};
             RestService
-                .findPlaceByCity(city)
+                .findAllCategories(a)
                 .success(function (data) {
                     vm.cats = data;
                     console.log(vm.cats);
                     vm.pic = vm.cats.featured_image;
-                });
+                });*/
 
         }
         init();
