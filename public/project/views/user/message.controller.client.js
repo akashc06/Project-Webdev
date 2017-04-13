@@ -1,14 +1,13 @@
 (function () {
     angular
         .module("Project")
-        .controller("FollowersController", FollowersController);
+        .controller("MessageController", MessageController);
 
     function FollowersController(UserService, MessageService, $routeParams, $location, $rootScope){
         var vm = this;
         vm.admin = "admin";
         vm.userID = $routeParams['uid'];
         var uid = $routeParams['uid'];
-        /*vm.reviews = reviews;*/
 
 
         vm.deleteMessage = deleteMessage;

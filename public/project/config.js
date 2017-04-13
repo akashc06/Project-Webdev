@@ -36,11 +36,6 @@
                 controller: "GuestController",
                 controllerAs: "model"
             })
-            .when("/home/guest/:key/search",{
-                templateUrl: "project/views/guest/guestpage.view.client.html",
-                controller: "GuestController",
-                controllerAs: "model"
-            })
             .when("/home/guest//search",{
                 templateUrl: "project/views/guest/guestpage.view.client.html",
                 controller: "GuestController",
@@ -88,8 +83,8 @@
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/user/:uid/messages", {
-                templateUrl: "project/views/user/followers.client.view.html",
-                controller: "FollowersController",
+                templateUrl: "project/views/user/messages.client.view.html",
+                controller: "MessageController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
             })
