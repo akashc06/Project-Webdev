@@ -3,7 +3,7 @@
         .module("Project")
         .controller("MessageController", MessageController);
 
-    function FollowersController(UserService, MessageService, $routeParams, $location, $rootScope){
+    function MessageController(UserService, MessageService, $routeParams, $location, $rootScope){
         var vm = this;
         vm.admin = "admin";
         vm.userID = $routeParams['uid'];
