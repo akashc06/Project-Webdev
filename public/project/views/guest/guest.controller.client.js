@@ -51,11 +51,6 @@
                 console.log(latitude + "  " + longitude);
             });
             RestService
-                .getLocation(key)
-                .success(function (locatio) {
-                    console.log(locatio.results[0].geometry.location)
-                });
-            RestService
                 .findPlaceByName(key)
                 .success(function (data) {
                     vm.places = data;

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="dropdown pull-right hidden-xs hidden-sm">
-            <a href="#/home" class="btn btn-danger" type="button" data-toggle="dropdown">Logout
+            <a ng-click="model.logout()" class="btn btn-danger" type="button" data-toggle="dropdown">Logout
             </a></div>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -24,7 +24,7 @@
                     <a href="#/user/{{model.userID}}/messages">My Messages</a>
                 </li>
                 <li class="visible-xs visible-sm">
-                    <a href="#/user/{{model.userID}}/messages">Logout</a>
+                    <a ng-click="model.logout()">Logout</a>
                 </li>
             </ul>
         </div>

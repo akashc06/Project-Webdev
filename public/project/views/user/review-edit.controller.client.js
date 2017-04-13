@@ -3,7 +3,7 @@
         .module("Project")
         .controller("ReviewEditController", ReviewEditController);
 
-    function ReviewEditController(UserService, ReviewService, $routeParams, $location){
+    function ReviewEditController(UserService, ReviewService, $routeParams, $location, $rootScope){
         var vm = this;
         vm.admin = "admin";
         vm.rid = $routeParams['rid'];
@@ -12,6 +12,16 @@
 
         vm.editreview = editreview;
         vm.deleteReview = deleteReview;
+        vm.logout = logout;
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function(response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/home");
+                });
+        }
 
         function init() {
             ReviewService

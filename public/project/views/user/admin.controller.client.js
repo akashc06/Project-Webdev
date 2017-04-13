@@ -16,6 +16,17 @@
         vm.createUser = createUser;
         vm.details = details;
         vm.postmessage = postmessage;
+        vm.logout = logout;
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function(response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/home");
+                });
+        }
+
 
         function details(ID, name) {
             vm.to_id = ID;
@@ -39,7 +50,7 @@
                             MessageService
                                 .createMessage(vm.userID, newmessage)
                                 .success(function (message) {
-                                    console.log(message)
+                                    vm.message = ""
                                 })
                         });
         }
@@ -58,6 +69,8 @@
                             .register(newuser)
                             .success(function (newUser) {
                                 var user = newUser;
+                                vm.newuser = "";
+                                vm.newuser.email = ""
                                 init();
                             })
                             .error(function () {

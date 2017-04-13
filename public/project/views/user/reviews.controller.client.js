@@ -4,7 +4,7 @@
         .controller("ReviewController", ReviewController);
 
 
-    function ReviewController(UserService, ReviewService, $routeParams, $location){
+    function ReviewController(UserService, ReviewService, $routeParams, $location, $rootScope){
         var vm = this;
         vm.userID = $routeParams['uid'];
         var uid = $routeParams['uid'];
@@ -14,6 +14,16 @@
         vm.submit = submit;
         vm.getDateFormat = getDateFormat;
         vm.deleteReview = deleteReview;
+        vm.logout = logout;
+
+        function logout() {
+            UserService
+                .logout()
+                .then(function(response) {
+                    $rootScope.currentUser = null;
+                    $location.url("/home");
+                });
+        }
 
         function init() {
             ReviewService

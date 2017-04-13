@@ -4,7 +4,7 @@
             <a class="btn btn-success"
                data-toggle="modal" data-target="#regModal">Create User</a>
 
-            <a href="#/home" class="btn btn-danger" type="button" data-toggle="dropdown">Logout
+            <a ng-click="model.logout()" class="btn btn-danger" type="button" data-toggle="dropdown">Logout
             </a></div>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -30,7 +30,7 @@
                     <a data-toggle="modal" data-target="#regModal">Create User</a>
                 </li>
                 <li class="visible-xs visible-sm">
-                    <a href="#/home">Logout</a>
+                    <a ng-click="model.logout()">Logout</a>
                 </li>
             </ul>
         </div>
