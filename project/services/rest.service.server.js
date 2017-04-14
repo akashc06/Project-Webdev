@@ -16,8 +16,8 @@ module.exports = function (app, z) {
     function findPlaceByName(req, res) {
         var obj = req.body;
         var name = obj.name;
-        var lat = obj.lat;
-        var lon = obj.lon;
+        var lat = obj.lati;
+        var lon = obj.lngi;
         z
             .search({
                 q: name,

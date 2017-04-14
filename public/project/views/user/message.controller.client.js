@@ -52,7 +52,6 @@
                             MessageService
                                 .createMessage(vm.userID, newmessage)
                                 .success(function (message) {
-                                    console.log(message)
                                 })
                         });
                 })

@@ -23,7 +23,6 @@ module.exports = function (app, messsagemodel) {
 
     function deleteMessagesforUser(req, res) {
         var userID = req.params.uid;
-        console.log(userID);
         messsagemodel.deleteMessagesforUser(userID)
             .then(function (status) {
                 res.sendStatus(200);

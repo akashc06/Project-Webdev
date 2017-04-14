@@ -43,7 +43,6 @@ module.exports = function (app, reviewModel) {
         var reviewID = req.params.rid;
         reviewModel.findReviewsforRes(reviewID)
             .then(function (reviews) {
-                console.log(reviews);
                 res.json(reviews);
             }, function (err) {
                 res.sendStatus(500).send(err);

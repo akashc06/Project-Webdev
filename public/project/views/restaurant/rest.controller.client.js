@@ -31,7 +31,6 @@
                     if(response){
                         $rootScope.currentUser = response.data;
                         user = response.data;
-                        console.log(user);
                         if(user){
                             //console.log(user[0]);
                             //$rootScope.currentUser = user[0];
@@ -84,7 +83,6 @@
                             ReviewService
                                 .createReview(vm.userID, vm.review)
                                 .success(function (newReview) {
-                                    console.log(newReview);
                                     init();
                                     vm.review.description = ""
                                 });

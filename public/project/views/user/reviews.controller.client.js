@@ -30,7 +30,6 @@
                 .findAllReviews(vm.userID)
                 .success(function (reviews) {
                 vm.reviews = reviews;
-                console.log(vm.reviews)
             });
             UserService
                 .findUserById(uid)

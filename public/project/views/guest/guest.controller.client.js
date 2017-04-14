@@ -19,7 +19,6 @@
                     if (response) {
                         $rootScope.currentUser = response.data;
                         user = response.data;
-                        console.log(user);
                         if (response) {
                             user = response.data;
                             if (user) {
@@ -45,13 +44,15 @@
 
 
         function searchplace(word) {
-            jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDCa1LUe1vOczX1hO_iGYgyo8p_jYuGOPU",
-                function(success) {
-                    vm.latitude= success.location.lat;
-                        vm.long= success.location.lng;
+            var latLong;
+            $.getJSON("http://ipinfo.io", function(ipinfo){
+                //console.log("Found location ["+ipinfo.loc+"] by ipinfo.io");
+                latLong = ipinfo.loc.split(",");
+                vm.lat = latLong[0];
+                vm.lon = latLong[1];
                         var obj = {name: word,
-                        lat:vm.latitude,
-                        lon:vm.long};
+                        lat:vm.lat,
+                        lon:vm.lon};
                     RestService
                         .findPlaceByName(obj)
                         .success(function (data) {
@@ -59,9 +60,6 @@
                             $location.url("/home/guest/"+word+ "/search");
                         })
             })
-                .fail(function(err) {
-                    alert("API Geolocation error! \n\n"+err);
-                });
 
         }
 
@@ -84,18 +82,27 @@
 
         };
 
-        var tryAPIGeolocation = function() {
-            jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDCa1LUe1vOczX1hO_iGYgyo8p_jYuGOPU",
-                function(success) {
-                    apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
-                })
-                .fail(function(err) {
-                    alert("API Geolocation error! \n\n"+err);
-                });
-        };
 
         function init() {
-            tryAPIGeolocation();
+            var latLong;
+            $.getJSON("http://ipinfo.io", function(ipinfo){
+                //console.log("Found location ["+ipinfo.loc+"] by ipinfo.io");
+                latLong = ipinfo.loc.split(",");
+                vm.lat = latLong[0];
+                vm.lon = latLong[1];
+                a = {lati: vm.lat, lngi: vm.lon, name:initkey};
+                console.log(a);
+                RestService
+                    .findPlaceByName(a)
+                    .success(function (data) {
+                        if(data.length == 0) {
+                            vm.display = "Please enable location services";
+                        }else {
+                            vm.places = data;
+                            vm.pic = vm.places.featured_image;
+                        }
+                    });
+            });
         }
         init();
 

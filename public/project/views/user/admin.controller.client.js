@@ -128,7 +128,6 @@
                 .findUserbytype(vm.type)
                 .success(function (users) {
                     vm.users = users;
-                    console.log(users)
                 });
         }
         init();

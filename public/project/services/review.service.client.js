@@ -37,7 +37,6 @@
         }
 
         function findAllReviews(userID) {
-            console.log(userID);
             return $http.get("/api/user/" + userID + "/review");
         }
 
