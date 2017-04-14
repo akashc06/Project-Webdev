@@ -34,12 +34,12 @@
 
     <div class="col-xs-8 profileinfo">
 
-        <h1>{{model.fname}} {{model.lname}} </h1>
+        <h1>{{model.firstname}} {{model.lastname}} </h1>
 
         <div class="form-group">
             <label for="profile-username">Username</label>
             <input class="form-control"
-                   ng-model="model.user.username"
+                   ng-model="model.curuser.username"
                    id="profile-username"
                    value="akash"
                    type="text"
@@ -49,7 +49,7 @@
         <div class="form-group">
             <label for="profile-mail">Email</label>
             <input class="form-control"
-                   ng-model="model.user.email"
+                   ng-model="model.curuser.email"
                    value="akashc@gmail.com"
                    id="profile-mail"
                    type="email"
@@ -60,7 +60,7 @@
         <div class="form-group">
             <label for="profile-fname">First Name</label>
             <input class="form-control"
-                   ng-model="model.user.firstname"
+                   ng-model="model.curuser.firstname"
                    id="profile-fname"
                    value="Akash"
                    type="text"
@@ -70,7 +70,7 @@
         <div class="form-group">
             <label for="profile-lname">Last Name</label>
             <input class="form-control"
-                   ng-model="model.user.lastname"
+                   ng-model="model.curuser.lastname"
                    id="profile-lname"
                    value="C"
                    type="text"
@@ -148,7 +148,11 @@
                 <div class="modal-body">
                     <div class="media" ng-repeat="review in model.reviews">
                         <div class="media-left">
-                            <img src="project/css/images/cake.jpeg" class="media-object" style="width:60px">
+                            <div>
+                                <div>
+                                    <img src="project/css/images/restaurants-default.jpg" style="width:60px" alt="Food" class="img-rounded">
+                                </div>
+                            </div>
                         </div>
                         <div class="media-body">
                              <h4 class="media-heading"><a href="#/home/{{model.userID}}/res/{{review.placeID}}">{{review.place}}</a>

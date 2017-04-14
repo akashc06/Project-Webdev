@@ -37,8 +37,6 @@
         }
 
         function deleteUser() {
-            var ans = confirm("Are you sure that you want to Delete user?");
-            if(ans){
                 UserService
                     .deleteUser(vm.userID)
                     .success(function () {
@@ -55,7 +53,6 @@
 
                     });
 
-            }
         }
 
         function init() {
@@ -119,7 +116,7 @@
                             MessageService
                                 .createMessage(vm.userID, newmessage)
                                 .success(function (message) {
-                                    console.log(message)
+                                    vm.message = "";
                                 })
                         });
                 })
@@ -143,16 +140,14 @@
                 .findAllReviews(vm.pID)
                 .success(function (reviews) {
                     vm.reviews = reviews;
-                    console.log(vm.reviews)
                 });
             UserService
                 .findUserById(vm.pID)
                 .success(function (user) {
-                    console.log(user.followers);
-                vm.user = user;
-                vm.lname = user.lastname;
-                vm.fname = user.firstname;
-                vm.uname = user.username;
+                vm.curuser = user;
+                vm.lastname = user.lastname;
+                vm.firstname = user.firstname;
+                vm.username = user.username;
             });
         }
         init();

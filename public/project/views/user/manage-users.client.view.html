@@ -60,7 +60,7 @@
         </thead>
         <tbody ng-repeat="user in model.users">
             <tr>
-                <td>{{user.username}}</td>
+                <td><a href="#/home/{{model.userID}}/profile/{{user._id}}">{{user.username}}</a></td>
                 <td>{{user.firstname}}</td>
                 <td>{{user.lastname}}</td>
                 <td>{{user.type}}</td>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="media" ng-repeat="review in model.reviews">
                         <div class="media-left">
-                            <img src="project/css/images/cake.jpeg" class="media-object" style="width:60px">
+                            <img src="project/css/images/restaurants-default.jpg" class="media-object" style="width:60px">
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">

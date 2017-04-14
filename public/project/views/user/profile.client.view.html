@@ -21,7 +21,10 @@
                     <a href="#/user/{{model.userID}}/messages">My Messages</a>
                 </li>
                 <li class="visible-xs visible-sm">
-                    <a href="#/home">Logout</a>
+                    <a data-toggle="modal" data-target="#myModal">Delete user</a>
+                </li>
+                <li class="visible-xs visible-sm">
+                    <a ng-click="model.logout()">Logout</a>
                 </li>
             </ul>
         </div>
@@ -36,7 +39,7 @@
             <li><a ng-if="model.user.type == model.admin" href="#/user/{{model.userID}}/administration">Manage users</a></li>
             <li><a href="#/user/{{model.userID}}/reviews">My Reviews</a></li>
             <li><a href="#/user/{{model.userID}}/messages">My Messages</a></li>
-            <li><a ng-click="model.deleteUser()" href="#/user/{{model.userID}}/messages">Delete account</a></li>
+            <li><a data-toggle="modal" data-target="#myModal">Delete account</a></li>
         </ul>
     </div>
 
@@ -120,3 +123,31 @@
     </div>
 
 </div>
+
+<div class="container">
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="false">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="reviewtitle">
+                        <h4 class="modal-title">Are you sure?</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <button id="reviewdes" class="btn btn-danger btn-block"
+                                  ng-click="model.deleteUser()">Confirm delete</button>
+                        <button class="btn btn-success btn-block" data-dismiss="modal"
+                        >Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
