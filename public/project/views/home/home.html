@@ -43,13 +43,10 @@
                     </input>
                 </div>
                 <div class="col-md-2 col-md-push-1 form-group">
-                    <a ng-click="model.getLocation()" title="Locate me" style="margin-left: -90px;width: 100px">
-                        <span class="glyphicon glyphicon-map-marker" style="font-size: 30px; color: crimson"></span>
-                    </a>
                     <button class="btn btn-danger btn-block"  data-toggle="modal" data-target="#myNModal"
                             type="submit"
-                            style="width: 100px;margin-left: 450px;margin-top: -38px"
-                            ng-click="model.testt(model.key, model.city)">Search</button>
+                            style="width: 100px;margin-left: 450px"
+                            >Search</button>
                 </div>
             </form>
 
@@ -59,14 +56,11 @@
         <div class="row  visible-sm visible-xs" style="margin-left: -300px;margin-right: 30px;margin-top: -50px">
 
             <div class="col-md-3 col-md-push-1 form-group">
-                <a ng-click="model.getLocation()" title="Locate me">
-                    <span class="glyphicon glyphicon-map-marker" style="font-size: 30px; color: crimson"></span>
-                </a>
-                <input ng-model="doctor.location"  class="form-control" style="width: 200px" placeholder="Restaurant name">
+                <input ng-model="model.key"  class="form-control" style="width: 200px" placeholder="Restaurant name">
                 </input>
             </div>
             <div class="col-md-2 col-md-push-1 form-group">
-                <a class="btn btn-success">Search</a>
+                <a class="btn btn-success" data-toggle="modal" data-target="#myNModal">Search</a>
             </div>
         </div>
     </div>

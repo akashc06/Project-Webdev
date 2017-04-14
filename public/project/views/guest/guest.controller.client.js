@@ -45,49 +45,57 @@
 
 
         function searchplace(word) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-                console.log(latitude + "  " + longitude);
-            });
-            RestService
-                .findPlaceByName(key)
-                .success(function (data) {
-                    vm.places = data;
-                    $location.url("/home/guest/"+word+ "/search");
-                })
+            jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDCa1LUe1vOczX1hO_iGYgyo8p_jYuGOPU",
+                function(success) {
+                    vm.latitude= success.location.lat;
+                        vm.long= success.location.lng;
+                        var obj = {name: word,
+                        lat:vm.latitude,
+                        lon:vm.long};
+                    RestService
+                        .findPlaceByName(obj)
+                        .success(function (data) {
+                            vm.places = data;
+                            $location.url("/home/guest/"+word+ "/search");
+                        })
+            })
+                .fail(function(err) {
+                    alert("API Geolocation error! \n\n"+err);
+                });
+
         }
 
 
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            }
-        }
-
-        function showPosition(position) {
+        var apiGeolocationSuccess = function(position) {
             vm.Lat = position.coords.latitude;
             vm.Lon = position.coords.longitude;
-        }
+            a = {name:initkey,
+                lat: vm.Lat, lon: vm.Lon};
+            RestService
+                .findPlaceByName(a)
+                .success(function (data) {
+                    if(data.length == 0) {
+                        vm.display = "Please enable location services";
+                    }else {
+                        vm.places = data;
+                        vm.pic = vm.places.featured_image;
+                    }
+                });
+
+        };
+
+        var tryAPIGeolocation = function() {
+            jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDCa1LUe1vOczX1hO_iGYgyo8p_jYuGOPU",
+                function(success) {
+                    apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+                })
+                .fail(function(err) {
+                    alert("API Geolocation error! \n\n"+err);
+                });
+        };
 
         function init() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            }
-            function showPosition(position) {
-                vm.Lat = position.coords.latitude;
-                vm.Lon = position.coords.longitude;
-                var nkey = {"name": initkey,
-                "lat" : vm.Lat,
-                "lon" : vm.Lon};
-                console.log(nkey);
-                RestService
-                    .findPlaceByName(nkey)
-                    .success(function (data) {
-                        vm.places = data;
-                    })
-            }
-
+            tryAPIGeolocation();
         }
         init();
 

@@ -12,7 +12,6 @@
         vm.register = register;
         vm.restsearch = restsearch;
         vm.sendKey  = sendKey;
-        vm.forgot =forgot;
         vm.getLocation = getLocation;
         vm.eraseData = eraseData;
 
@@ -69,22 +68,6 @@
                     vm.pic = vm.cats.featured_image;
                     }
                 });
-        }
-
-        function forgot(user) {
-            if(user.email === user.cemail){
-                UserService
-                    .findUserbyMail(user.email)
-                    .success(function (user) {
-                        if(user.length != 0){
-                            $location.url("/user/" + user[0]._id);
-                        }else {
-                            alert("Oops! No user found")
-                        }
-                    })
-            }else {
-                alert("Emails do not match")
-            }
         }
 
         function sendKey(name, city) {
