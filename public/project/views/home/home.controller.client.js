@@ -30,6 +30,7 @@
             vm.Lat = position.coords.latitude;
             vm.Lon = position.coords.longitude;
             a = {lati: vm.Lat, lngi: vm.Lon};
+            console.log(a);
             RestService
                 .findAllCategories(a)
                 .success(function (data) {
@@ -70,14 +71,6 @@
 
         function init() {
             getLocation();
-            /*var city = {city: vm.city};
-            RestService
-                .findAllCategories(a)
-                .success(function (data) {
-                    vm.cats = data;
-                    console.log(vm.cats);
-                    vm.pic = vm.cats.featured_image;
-                });*/
 
         }
         init();
