@@ -26,49 +26,6 @@
         }
 
 
-        var apiGeolocationSuccess = function(position) {
-            vm.Lat = position.coords.latitude;
-            vm.Lon = position.coords.longitude;
-            a = {lati: vm.Lat, lngi: vm.Lon};
-            RestService
-                .findAllCategories(a)
-                .success(function (data) {
-                    if(data.length == 0) {
-                        vm.display = "Please enable location services";
-                    }else {
-                        vm.cats = data;
-                        vm.pic = vm.cats.featured_image;
-                    }
-                });
-
-        };
-
-        var tryAPIGeolocation = function() {
-            $http.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAK_s72XUq-20vDe6C2jB_uthMgJXSkv40",
-                function(success) {
-                apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
-            })
-                .error(function(err) {
-                    alert("API Geolocation error! \n\n"+err);
-                });
-        };
-
-        function showPosition(position) {
-            vm.Lat = position.coords.latitude;
-            vm.Lon = position.coords.longitude;
-            a = {lati: vm.Lat, lngi: vm.Lon};
-            RestService
-                .findAllCategories(a)
-                .success(function (data) {
-                    if(data.length == 0) {
-                        vm.display = "Please enable location services";
-                    }else {
-                    vm.cats = data;
-                    vm.pic = vm.cats.featured_image;
-                    }
-                });
-        }
-
         function sendKey(name, city) {
             vm.key = name;
             vm.city = city;

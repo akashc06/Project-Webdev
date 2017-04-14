@@ -56,7 +56,8 @@
         }
 
 
-        function createUser(newuser) {if (newuser && newuser.username && newuser.password && newuser.cpassword) {
+        function createUser(newuser)
+        {if (newuser && newuser.username && newuser.password && newuser.cpassword) {
             if (newuser.password === newuser.cpassword) {
                 UserService
                     .findUserByUsername(newuser.username)
@@ -131,14 +132,6 @@
                 });
         }
         init();
-
-        function getDateFormat(timestamp) {
-            return new Date(timestamp);
-        }
-
-        function getTime(timestamp) {
-            return new Date(timestamp).getTime();
-        }
 
         function deleteReview(rid) {
             ReviewService

@@ -91,10 +91,6 @@
 
                 })
         }
-            /*console.log(rev);
-            vm.review = {placeID:vm.restID,
-                description: rev.description,
-            place:rev.name}*/
 
 
         function init() {

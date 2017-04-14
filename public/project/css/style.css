@@ -15,6 +15,33 @@
     font-size: large;
     position: relative;
 }
+.gbtn{
+    margin-left: 10px
+}
+.mclr{
+    background-color: ghostwhite
+}
+.rme{
+    color:black;
+}
+.rename{
+    width: 500px
+}
+.gt{
+    margin-bottom: 200px;
+    width: 200px
+}
+.bow{
+    width:300px;
+    position: absolute;
+    margin-top: -300px;
+    margin-left: 300px
+}
+.hmepic{
+    position: relative;
+    height: 600px;
+    width: 100%
+}
 img:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }

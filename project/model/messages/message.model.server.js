@@ -2,6 +2,7 @@ module.exports = function (mongoose, q) {
 
     var MessageSchema = require('./message.schema.server')(mongoose);
     var MessageModel = mongoose.model('MessageModel', MessageSchema);
+    mongoose.
 
 
     var api ={
