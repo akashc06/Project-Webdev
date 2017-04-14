@@ -26,6 +26,34 @@
             }
         }
 
+
+        var apiGeolocationSuccess = function(position) {
+            vm.Lat = position.coords.latitude;
+            vm.Lon = position.coords.longitude;
+            a = {lati: vm.Lat, lngi: vm.Lon};
+            RestService
+                .findAllCategories(a)
+                .success(function (data) {
+                    if(data.length == 0) {
+                        vm.display = "Please enable location services";
+                    }else {
+                        vm.cats = data;
+                        vm.pic = vm.cats.featured_image;
+                    }
+                });
+
+        };
+
+        var tryAPIGeolocation = function() {
+            jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDCa1LUe1vOczX1hO_iGYgyo8p_jYuGOPU",
+                function(success) {
+                apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+            })
+                .fail(function(err) {
+                    alert("API Geolocation error! \n\n"+err);
+                });
+        };
+
         function showPosition(position) {
             vm.Lat = position.coords.latitude;
             vm.Lon = position.coords.longitude;
@@ -70,7 +98,8 @@
 
 
         function init() {
-            getLocation();
+            /*getLocation();*/
+            tryAPIGeolocation();
 
         }
         init();
