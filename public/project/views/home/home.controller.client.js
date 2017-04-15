@@ -37,7 +37,7 @@
 
 
         function init() {
-            $.getJSON('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+            $.getJSON('//ip-api.com/json?callback=?', function(data) {
                 console.log(JSON.stringify(data, null, 2));
             });
             /*UserService
