@@ -43,7 +43,6 @@
                     vm.lat = latLong[0];
                     vm.lon = latLong[1];
                     a = {lati: vm.lat, lngi: vm.lon};
-                    console.log(a);
                     RestService
                         .findAllCategories(a)
                         .success(function (data) {
