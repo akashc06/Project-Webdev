@@ -37,7 +37,7 @@
 
 
         function init() {
-            $.getJSON('//ip-api.com/json?callback=?', function(data) {
+            $.getJSON('//ipinfo.io/json', function(data) {
                 console.log(JSON.stringify(data, null, 2));
             });
             /*UserService
