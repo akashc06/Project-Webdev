@@ -1,5 +1,5 @@
 
-module.exports = function (app, z) {
+module.exports = function (app, z, IPinfo) {
 
 
     var mongoose = require('mongoose');
@@ -26,7 +26,7 @@ module.exports = function (app, z) {
     var reviewmodel = require("./model/review/review.model.server")(mongoose);
     var messagemodel = require("./model/messages/message.model.server")(mongoose);
 
-    require("./services/user.service.server.js")(app, usermodel, z);
+    require("./services/user.service.server.js")(app, usermodel, z, IPinfo);
     require("./services/review.service.server.js")(app, reviewmodel);
     require("./services/message.service.server")(app, messagemodel);
     require("./services/rest.service.server")(app, z);

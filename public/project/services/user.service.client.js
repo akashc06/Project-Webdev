@@ -17,12 +17,17 @@
             "addReview" : addReview,
             "findUserbytype" : findUserbytype,
             "register" : register,
-            "logout" : logout
+            "logout" : logout,
+            "getMyLocation" : getMyLocation
         };
         return api;
 
         function register(user) {
             return $http.post("/api/register", user);
+        }
+
+        function getMyLocation() {
+            return $http.get("/api/location/ip");
         }
         
         function login(user) {

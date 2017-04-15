@@ -37,13 +37,13 @@
 
 
         function init() {
-            var latLong;
-            $.getJSON("https://ipinfo.io", function(ipinfo){
-                //console.log("Found location ["+ipinfo.loc+"] by ipinfo.io");
-                latLong = ipinfo.loc.split(",");
-                vm.lat = latLong[0];
-                vm.lon = latLong[1];
-                a = {lati: vm.lat, lngi: vm.lon};
+            UserService
+                .getMyLocation()
+                .success(function (data) {
+                    latLong = data.split(",");
+                    vm.lat = latLong[0];
+                    vm.lon = latLong[1];
+                    a = {lati: vm.lat, lngi: vm.lon};
                 RestService
                     .findAllCategories(a)
                     .success(function (data) {
@@ -54,7 +54,8 @@
                             vm.pic = vm.cats.featured_image;
                         }
                     });
-            });
+                });
+
 
         }
         init();

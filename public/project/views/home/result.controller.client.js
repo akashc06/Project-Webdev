@@ -22,11 +22,12 @@
 
 
         function searchplace(word) {
-            var latLong;
-            $.getJSON("http://ipinfo.io", function (ipinfo) {
-                latLong = ipinfo.loc.split(",");
-                vm.lat = latLong[0];
-                vm.lon = latLong[1];
+            UserService
+                .getMyLocation()
+                .success(function (data) {
+                    latLong = data.split(",");
+                    vm.lat = latLong[0];
+                    vm.lon = latLong[1];
                 var obj = {
                     name: word,
                     lat: vm.lat,
@@ -43,13 +44,13 @@
         }
 
         function init() {
-            var latLong;
-            $.getJSON("http://ipinfo.io", function(ipinfo){
-                //console.log("Found location ["+ipinfo.loc+"] by ipinfo.io");
-                latLong = ipinfo.loc.split(",");
-                vm.lat = latLong[0];
-                vm.lon = latLong[1];
-                a = {lati: vm.lat, lngi: vm.lon};
+            UserService
+                .getMyLocation()
+                .success(function (data) {
+                    latLong = data.split(",");
+                    vm.lat = latLong[0];
+                    vm.lon = latLong[1];
+                    a = {lati: vm.lat, lngi: vm.lon};
                 RestService
                     .findPlaceByName(a)
                     .success(function (data) {

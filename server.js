@@ -4,6 +4,7 @@ var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
 var app = express();
 const Zomato = require('zomato.js');
+var IPinfo = require('get-ipinfo');
 
 const z = new Zomato('ecb092da3471c0396d4c9c0b2c1db590');
 
@@ -26,7 +27,7 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 //require("./assignment/app.js")(app);
-require("./project/app.js")(app, z);
+require("./project/app.js")(app, z, IPinfo);
 
 var port = process.env.PORT || 3000;
 

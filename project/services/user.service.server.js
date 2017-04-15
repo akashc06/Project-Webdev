@@ -1,5 +1,5 @@
 
-module.exports = function (app, userModel, z) {
+module.exports = function (app, userModel, z, IPinfo) {
 
     var facebookConfig = {
         clientID     : 665403380328118, //process.env.FACEBOOK_CLIENT_ID,
@@ -33,6 +33,7 @@ module.exports = function (app, userModel, z) {
     app.post("/api/users/forgot/:mail", findUserbyMail);
     app.post('/api/logout', logout);
     app.get('/api/loggedin', loggedin);
+    app.get("/api/location/ip", getMyLocation);
 
     app.get("/api/auth/facebook", passport.authenticate('facebook', { scope : 'email' }));
     app.get('/auth/facebook/callback',
@@ -43,11 +44,13 @@ module.exports = function (app, userModel, z) {
         });
 
     function loggedin(req, res) {
-        // if(req.isAuthenticated()){
-        //     res.send(req.user);
-        // }
-        // res.send('0');
         res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+    function getMyLocation(req, res) {
+        IPinfo(function(err, ip) {
+            res.send(ip.loc);
+        });
     }
 
     function facebookStrategy(token, refreshToken, profile, done) {
