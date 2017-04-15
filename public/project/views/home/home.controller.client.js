@@ -37,14 +37,17 @@
 
 
         function init() {
-            UserService
+            $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+                console.log(JSON.stringify(data, null, 2));
+            });
+            /*UserService
                 .getMyLocation()
-                .success(function (data) {
+                .success(function (data) {*/
                    /* latLong = data.split(",");
                     vm.lat = latLong[0];
                     vm.lon = latLong[1];
                     a = {lati: vm.lat, lngi: vm.lon};*/
-                    console.log(data);
+                    /*console.log(data);*/
                 /*RestService
                     .findAllCategories(a)
                     .success(function (data) {
@@ -55,7 +58,7 @@
                             vm.pic = vm.cats.featured_image;
                         }
                     });*/
-                });
+                
 
 
         }
