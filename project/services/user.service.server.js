@@ -49,7 +49,7 @@ module.exports = function (app, userModel, z, IPinfo) {
 
     function getMyLocation(req, res) {
         IPinfo(function(err, ip) {
-            res.send(ip.loc);
+            res.send(ip);
         });
     }
 
