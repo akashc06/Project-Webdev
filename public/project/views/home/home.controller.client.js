@@ -37,23 +37,24 @@
 
 
         function init() {
-            UserService
-                .getMyLocation()
-                .success(function (data) {
+            $.getJSON('//ipinfo.io/json', function(data) {
+                (JSON.stringify(data, null, 2));
                     latLong = data.loc.split(",");
                     vm.lat = latLong[0];
                     vm.lon = latLong[1];
                     a = {lati: vm.lat, lngi: vm.lon};
-                RestService
-                    .findAllCategories(a)
-                    .success(function (data) {
-                        if(data.length == 0) {
-                            vm.display = "Please enable location services";
-                        }else {
-                            vm.cats = data;
-                            vm.pic = vm.cats.featured_image;
-                        }
-                    });
+                    console.log(a);
+                    RestService
+                        .findAllCategories(a)
+                        .success(function (data) {
+                            if (data.length == 0) {
+                                vm.display = "Please enable location services";
+                            } else {
+                                vm.cats = data;
+                                vm.pic = vm.cats.featured_image;
+                            }
+                        });
+
         })
         }
         init();
