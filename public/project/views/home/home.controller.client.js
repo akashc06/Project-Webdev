@@ -38,7 +38,7 @@
 
         function init() {
             var latLong;
-            $.getJSON("http://ipinfo.io", function(ipinfo){
+            $.getJSON("https://ipinfo.io", function(ipinfo){
                 //console.log("Found location ["+ipinfo.loc+"] by ipinfo.io");
                 latLong = ipinfo.loc.split(",");
                 vm.lat = latLong[0];
