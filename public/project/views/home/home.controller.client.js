@@ -37,7 +37,7 @@
 
 
         function init() {
-            $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
+            $.getJSON('//www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
                 console.log(JSON.stringify(data, null, 2));
             });
             /*UserService
@@ -58,7 +58,7 @@
                             vm.pic = vm.cats.featured_image;
                         }
                     });*/
-                
+
 
 
         }
