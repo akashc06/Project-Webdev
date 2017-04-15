@@ -72,6 +72,7 @@
                     vm.lat = latLong[0];
                     vm.lon = latLong[1];
                 a = {lati: vm.lat, lngi: vm.lon, name:initkey};
+                    console.log(a);
                 RestService
                     .findPlaceByName(a)
                     .success(function (data) {
