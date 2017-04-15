@@ -37,18 +37,14 @@
 
 
         function init() {
-            $.getJSON('//ipinfo.io/json', function(data) {
-                console.log(JSON.stringify(data, null, 2));
-            });
-            /*UserService
+            UserService
                 .getMyLocation()
-                .success(function (data) {*/
-                   /* latLong = data.split(",");
+                .success(function (data) {
+                    latLong = data.loc.split(",");
                     vm.lat = latLong[0];
                     vm.lon = latLong[1];
-                    a = {lati: vm.lat, lngi: vm.lon};*/
-                    /*console.log(data);*/
-                /*RestService
+                    a = {lati: vm.lat, lngi: vm.lon};
+                RestService
                     .findAllCategories(a)
                     .success(function (data) {
                         if(data.length == 0) {
@@ -57,10 +53,8 @@
                             vm.cats = data;
                             vm.pic = vm.cats.featured_image;
                         }
-                    });*/
-
-
-
+                    });
+        })
         }
         init();
 

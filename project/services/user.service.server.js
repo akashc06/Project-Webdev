@@ -48,8 +48,8 @@ module.exports = function (app, userModel, z, IPinfo) {
     }
 
     function getMyLocation(req, res) {
-        IPinfo(function(err, ip) {
-            res.send(ip);
+        $.getJSON('//ipinfo.io/json', function(data) {
+            res.send(JSON.stringify(data, null, 2));
         });
     }
 
