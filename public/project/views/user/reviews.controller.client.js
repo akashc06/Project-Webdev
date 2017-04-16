@@ -45,8 +45,11 @@
             ReviewService
                 .createReview(vm.userID, review)
                 .success(function (newWebsite) {
-                    init();
+                    UserService.addReview(vm.userID, newWebsite._id)
+                        .success(function () {
+                            init();
                         });
+                });
         }
 
         function getDateFormat(timestamp) {

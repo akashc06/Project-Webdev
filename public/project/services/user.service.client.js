@@ -14,6 +14,7 @@
             "findUserbyMail": findUserbyMail,
             "updateUser" : updateUser,
             "deleteUser" : deleteUser,
+            "addReview" : addReview,
             "findUserbytype" : findUserbytype,
             "register" : register,
             "logout" : logout,
@@ -69,6 +70,9 @@
             return $http.delete("/api/user/" + userId);
         }
 
+        function addReview(userId, reviewId) {
+            return $http.put("/api/user/"+userId+"/review/"+reviewId);
+        }
     }
 
 })();

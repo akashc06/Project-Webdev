@@ -19,5 +19,14 @@ module.exports = function (mongoose) {
         dateCreated: { type: Date, default: Date.now }
     }, {collection: 'project.user'});
 
+    /*UserSchema.post('remove', function () {
+        var user = this;
+        var reviewModel = require('../review/review.model.server');
+        reviewModel.find({user: {$in: user.reviews}}, '_id', function (err, pages) {
+            if(err == null) {
+            }
+        });
+    });
+*/
     return UserSchema;
 };

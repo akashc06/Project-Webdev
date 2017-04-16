@@ -28,6 +28,7 @@ module.exports = function (app, userModel, z, IPinfo) {
     app.post("/dpi/user/update", updateUser);
     app.post("/dpi/user", createUser);
     app.delete("/api/user/:userID", deleteUser);
+    app.put("/api/user/:userId/review/:reviewId", addReview);
     app.post("/api/users/:type", findUserbytype);
     app.post("/api/users/forgot/:mail", findUserbyMail);
     app.post('/api/logout', logout);
@@ -273,7 +274,17 @@ module.exports = function (app, userModel, z, IPinfo) {
                 res.sendStatus(500).send(err);
             });
     }
-
+    
+    function addReview(req, res) {
+        var userId = req.params.userId;
+        var reviewId = req.params.reviewId;
+        userModel.addReview(userId, reviewId)
+            .then(function (user) {
+                res.sendStatus(200);
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            })
+    }
 
 };
 
