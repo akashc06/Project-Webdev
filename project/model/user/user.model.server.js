@@ -20,21 +20,15 @@ module.exports = function (mongoose, q) {
         "findUserById" : findUserById,
         "findUserByUsername" : findUserByUsername,
         "findUserByCredentials" : findUserByCredentials,
-        "findUserByGoogleId" : findUserByGoogleId,
         "updateUser" : updateUser,
         "deleteUser" : deleteUser,
-        "addReview" : addReview,
         "findAllusers" : findAllusers,
-        "addFollowing" : addFollowing,
-        "addFollower" : addFollower,
         "findUserbytype" : findUserbytype,
-        "findUserbyMail" : findUserbyMail,
         "findUserByFacebookId" : findUserByFacebookId
     };
     return api;
 
     function findUserByFacebookId(facebookId) {
-        //return User.findOne({'facebook.id': facebookId});
         var deferred = q.defer();
 
         UserModel.findOne({'facebook.id': facebookId}, function (err, user) {
@@ -48,16 +42,18 @@ module.exports = function (mongoose, q) {
         return deferred.promise;
     }
 
-    function findUserByGoogleId(googleId) {
-        return UserModel.findOne({"google.id": googleId })
-    }
 
     function findUserbytype(type) {
-        return UserModel.find({type: type})
-    }
-
-    function findUserbyMail(mail) {
-        return UserModel.find({email: mail})
+        var deferred = q.defer();
+        UserModel.find({type: type}, function (err, user) {
+            if(err){
+                deferred.reject(err);
+            }
+            else {
+                deferred.resolve(user);
+            }
+        });
+        return deferred.promise;
     }
 
     function findAllusers() {
@@ -125,49 +121,5 @@ module.exports = function (mongoose, q) {
         return deferred.promise;
     }
 
-    function addReview(userId, ReviewID) {
-        var deferred = q.defer();
-        UserModel.findById(userId, function (err, user) {
-            if(err){
-                deferred.reject(err);
-            }
-            else {
-                user.reviews.push(ReviewID);
-                user.save();
-                deferred.resolve();
-            }
-        });
-        return deferred.promise;
-    }
-
-    function addFollowing(userId, folloId) {
-        var deferred = q.defer();
-        UserModel.findById(userId, function (err, user) {
-            if(err){
-                deferred.reject(err);
-            }
-            else {
-                user.following.push(folloId);
-                user.save();
-                deferred.resolve();
-            }
-        });
-        return deferred.promise;
-    }
-
-    function addFollower(userId, folloId) {
-        var deferred = q.defer();
-        UserModel.findById(userId, function (err, user) {
-            if(err){
-                deferred.reject(err);
-            }
-            else {
-                user.followers.push(folloId);
-                user.save();
-                deferred.resolve();
-            }
-        });
-        return deferred.promise;
-    }
 
 };

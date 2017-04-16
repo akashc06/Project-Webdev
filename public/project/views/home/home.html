@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" style="background-color: gainsboro">
+<nav class="navbar navbar-default navbar-fixed-top nvc">
     <div class="container-fluid">
         <div class="dropdown pull-right hidden-xs hidden-sm">
             <a class="btn btn-info" type="button"
@@ -9,13 +9,14 @@
             </a>
         </div>
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle"
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand rme">ReviewME</a>
+            <a class="navbar-brand">ReviewME</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -33,7 +34,7 @@
 </nav>
 
 
-    <img src="project/css/images/pexels-photo-70497.jpeg" class="hmepic">
+<img src="project/css/images/pexels-photo-70497.jpeg" width="100%" class="hmepic">
 <div class="container-fluid home">
     <div class="row bow">
         <div class="gt">
@@ -44,9 +45,8 @@
                     </input>
                 </div>
                 <div class="col-md-2 col-md-push-1 form-group">
-                    <button class="btn btn-danger btn-block"  data-toggle="modal" data-target="#myNModal"
+                    <button class="btn btn-danger btn-block scb"  data-toggle="modal" data-target="#myNModal"
                             type="submit"
-                            style="width: 100px;margin-left: 450px"
                             >Search</button>
                 </div>
             </form>
@@ -54,10 +54,10 @@
 
         </div>
         <!--show for small and x-small size screen-->
-        <div class="row  visible-sm visible-xs" style="margin-left: -300px;margin-right: 30px;margin-top: -50px">
+        <div class="row  visible-sm visible-xs smsc">
 
             <div class="col-md-3 col-md-push-1 form-group">
-                <input ng-model="model.key"  class="form-control" style="width: 200px" placeholder="Restaurant name">
+                <input ng-model="model.key"  class="form-control key" placeholder="Restaurant name">
                 </input>
             </div>
             <div class="col-md-2 col-md-push-1 form-group">
@@ -67,7 +67,7 @@
     </div>
 
 
-    <div class="container-fluid" style="background-color: ghostwhite">
+    <div class="container-fluid">
         <h1>{{model.tosay}}</h1>
         <div class="container-fluid res">
             <div class="alert alert-dismissable alert-danger" ng-show="model.uerror">
@@ -102,20 +102,19 @@
     </div>
 </div>
 
-
-
-
-
-
 <div class="modal fade bs-example-modal-sm" data-backdrop="false"
      id="myNModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="background-color: ghostwhite">
+        <div class="modal-content mdlc">
             <div class="modal-header">
                 <button type="button" class="close" ng-click="model.eraseData()"
                         data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" >&times;</span></button>
                 <h2 class="modal-title">Please login to continue</h2>
+                <div class="alert alert-dismissable alert-danger" ng-show="model.xerror">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    {{model.xerror}}
+                </div>
             </div>
             <div class="modal-body container-fluid">
                 <div class="form-group">
@@ -146,14 +145,15 @@
 <div class="modal fade bs-example-modal-sm" data-backdrop="false"
      id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="background-color: ghostwhite">
+        <div class="modal-content mdlc">
             <div class="modal-header">
                 <button type="button" ng-click="model.eraseData()"
                         class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 <h2 class="modal-title" id="myModalLabel">Login to your account</h2>
-                <div class="alert alert-dismissable alert-danger" ng-show="model.error">
-                    {{model.error}}
+                <div class="alert alert-dismissable alert-danger" ng-show="model.xerror">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    {{model.xerror}}
                 </div>
             </div>
             <div class="modal-body container-fluid">
@@ -178,12 +178,14 @@
 <div class="modal fade bs-example-modal-sm" data-backdrop="false"
      id="regModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="background-color: ghostwhite">
+        <div class="modal-content mdlc">
             <div class="modal-header">
-                <button type="button" class="close" ng-click="model.eraseData()" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close"
+                        ng-click="model.eraseData()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title" style="margin-left: 180px" id="regModalLabel">Not a member yet?</h3>
+                <h3 class="modal-title mdlt" id="regModalLabel">Not a member yet?</h3>
                 <div class="alert alert-dismissable alert-danger" ng-show="model.uerror">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
                     {{model.uerror}}
                 </div>
             </div>
@@ -192,7 +194,7 @@
                 <div class="form-group">
                     <input type="text" ng-model="model.user.username" name="username"
                            class="form-control" placeholder="Username" required/>
-                    <span style="color: red" ng-if="form1.username.$error.required">Username is required</span>
+                    <span class="ngf" ng-if="form1.username.$error.required">Username is required</span>
                 </div>
                 <div class="form-group">
                     <input type="text" ng-model="model.user.firstname"
@@ -213,12 +215,12 @@
                 <div class="form-group">
                     <input type="password" ng-model="model.user.password" name="Password"
                            class="form-control" placeholder="Password" required>
-                    <span style="color: red" ng-if="form1.Password.$error.required">Password is required</span>
+                    <span class="ngf" ng-if="form1.Password.$error.required">Password is required</span>
                 </div>
                 <div class="form-group">
                     <input type="password" ng-model="model.user.cpassword" name="CPassword"
                            class="form-control" placeholder="Confirm Password" required>
-                    <span style="color: red" ng-if="form1.CPassword.$error.required">Re-enter your password</span>
+                    <span class="ngf" ng-if="form1.CPassword.$error.required">Re-enter your password</span>
                 </div>
                 <button type="submit" class="btn btn-success btn-block" ng-click="model.register(model.user)">Register</button>
                 </form>

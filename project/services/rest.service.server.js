@@ -9,8 +9,6 @@ module.exports = function (app, z) {
     app.post("/api/rest/places/near/", findNearByPlaces);
     app.post("/api/rest/place/name", findPlaceByName);
     app.post("/api/rest/place/city", findPlaceByCity);
-    /*app.put("/api/review/:reviewId", updateReview);
-    app.delete("/api/review/:reviewId", deleteReview);*/
 
 
     function findPlaceByName(req, res) {

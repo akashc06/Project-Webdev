@@ -166,14 +166,14 @@ module.exports = function (app, userModel, z, IPinfo) {
 
     function logout(req, res) {
         req.logOut();
-        res.send(200);
+        res.sendStatus(200);
     }
 
     function localStrategy(username, password, done) {
         userModel
             .findUserByUsername(username)
             .then(function(user) {
-                    if (!user)
+                    if (user.length == 0)
                     {
                         return done(null, false);
                     }
@@ -190,7 +190,7 @@ module.exports = function (app, userModel, z, IPinfo) {
 
     function authorized (req, res, next) {
         if (!req.isAuthenticated()) {
-            res.send(401);
+            res.sendStatus(401);
         } else {
             next();
         }

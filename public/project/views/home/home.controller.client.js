@@ -103,12 +103,12 @@
                         }
                     }
                     else{
-                            vm.error = "User not found";
+                            vm.error = "Invalid Username/Password";
                     }
 
                 },function (err) {
-                    vm.error = "User not found";
-                })
+                    vm.xerror = "User not found";
+                });
 
         }
     }

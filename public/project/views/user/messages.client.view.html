@@ -45,7 +45,7 @@
         <div class="media" ng-repeat="sms in model.messages | filter: model.query | orderBy: '-date'">
             <div class="panel panel-info">
                 <div class="panel-heading">{{sms.from}} says :
-                <div class="pull-right" style="margin-top: -6px">
+                <div class="pull-right msgb">
                     <a class="btn btn-danger" ng-click="model.deleteMessage(sms._id)">delete</a>
                     <a class="btn btn-info" data-toggle="modal" data-target="#myModal"
                        ng-click="model.sendinfo(sms.from_id, sms.from)" >reply</a>
@@ -86,10 +86,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-success" style="margin-left: 10px" data-dismiss="modal"
-                       ng-click="model.reply(model.message)">Submit</a>
-                    <!--<button type="button" class="btn btn-primary form-control"
-                            ng-click="model.submit(model.review)" data-dismiss="modal">Submit</button>-->
+                    <a class="btn btn-success sb" data-dismiss="modal"
+                       ng-click="model.reply(model.message)">Send</a>
                 </div>
             </div>
 

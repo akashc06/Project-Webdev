@@ -11,7 +11,7 @@
             </form>
         <div class="dropdown pull-right dpdn">
             <div ng-if="model.userID == undefined">
-                <a class="btn btn-success" style="margin-left: 10px"
+                <a class="btn btn-success sb"
                    data-toggle="modal" data-target="#myLModal">Login</a>
                 <a class="btn btn-primary"
                    href="#/home">Home</a>
@@ -28,7 +28,7 @@
     </div>
 </nav>
 
-<div class="container-fluid" style="overflow-x: hidden;margin-top: 50px">
+<div class="container-fluid restc">
     <div class="panel-body">
     <div class="container-fluid">
         <div class="col-xs-4 pull-left">
@@ -56,7 +56,7 @@
             <div class="panel-body">
                 <h4>Average Rating:</h4>
                 <div class="star-ratings-css">
-                    <div class="star-ratings-css-top" style="width: {{model.rating}}%">
+                    <div class="star-ratings-css-top " style="width: {{model.rating}}%">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     <div class="star-ratings-css-bottom">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -110,27 +110,27 @@
 </div>
 
 <div class="panel">
-    <div class="panel-heading" style="background-color: lightsteelblue">
+    <div class="panel-heading revc">
         <h3 >User reviews:</h3>
         <div ng-if="model.userID == undefined">
             <button disabled title="Login to review"
-                    type="button" style="margin-top: -50px" class="hidden-xs btn btn-info btn-lg pull-right"
+                    type="button" class="rvb hidden-xs btn btn-info btn-lg pull-right"
                     data-toggle="modal" data-target="#myModal">ReviewME</button>
         </div>
         <div ng-if="model.userID !== undefined">
-            <button type="button" style="margin-top: -50px" class="hidden-xs btn btn-info btn-lg pull-right"
+            <button type="button" class="rvb hidden-xs btn btn-info btn-lg pull-right"
                     data-toggle="modal" data-target="#myModal">ReviewME</button>
         </div>
 
         <button data-toggle="modal" data-target="#myModal"
-                class="pull-right btn-lg visible-xs pull-right" style="margin-top: -50px">
+                class="pull-right btn-lg visible-xs pull-right rvb">
             <span class="glyphicon glyphicon-edit"></span> </button>
     </div>
-    <div class="panel-body" style="background-color: ghostwhite">
+    <div class="panel-body mdlc" >
         <div class="container-fluid">
             <div class="media" ng-repeat="review in model.rs | filter: model.query | orderBy: '-date'">
                 <div class="media-left">
-                    <img src="project/css/images/userimg.jpeg" class="media-object" style="width:60px">
+                    <img src="project/css/images/userimg.jpeg" class="media-object defres">
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading">
@@ -229,7 +229,7 @@
 <div class="modal fade bs-example-modal-sm" data-backdrop="false"
      id="myLModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="background-color: ghostwhite">
+        <div class="modal-content mdlc" >
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
