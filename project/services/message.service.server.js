@@ -4,11 +4,6 @@ module.exports = function (app, messsagemodel) {
     app.get("/api/message/user/:userId", findAllmessagesforId);
     app.delete("/api/delete/:mid", deleteMessage);
     app.delete("/api/messages/:uid",deleteMessagesforUser);
-    /*app.get("/api/user/:userId/review", findAllReviews);
-    app.get("/api/rest/:rid/review", findReviewsforRes);
-    app.get("/api/review/:reviewId", findReviewById);
-    app.put("/api/review/:reviewId", updateReview);
-    app.delete("/api/review/:reviewId", deleteReview);*/
 
     function createMessage(req, res) {
         var userID = req.params.userId;

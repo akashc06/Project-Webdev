@@ -26,7 +26,7 @@ module.exports = function (app, z) {
                 res.json(data);
             })
             .catch(function(err) {
-                console.error(err);
+                res.send(err);
             });
     }
 
@@ -58,7 +58,7 @@ module.exports = function (app, z) {
                 res.json(data);
             })
             .catch(function(err) {
-                console.error(err);
+                res.send(err);
             });
     }
 
@@ -74,7 +74,7 @@ module.exports = function (app, z) {
                 res.send(data);
             })
             .catch(function(err) {
-                console.error(err);
+                res.send(err);
             });
     }
 
@@ -88,7 +88,7 @@ module.exports = function (app, z) {
                 res.json(data);
             })
             .catch(function(err) {
-                console.error(err);
+                res.send(err);
             });
 
     }

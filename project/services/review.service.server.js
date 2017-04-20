@@ -79,15 +79,4 @@ module.exports = function (app, reviewModel) {
                 res.sendStatus(500).send(err);
             });
     }
-
-    /*function addPage(req, res) {
-        var websiteId = req.params.websiteId;
-        var pageId = req.params.pageId;
-        WebsiteModel.addPage(websiteId, pageId)
-            .then(function (website) {
-                res.sendStatus(200);
-            }, function (err) {
-                res.sendStatus(500).send(err);
-            });
-    }*/
 };
