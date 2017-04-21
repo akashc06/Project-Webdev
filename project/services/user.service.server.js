@@ -2,9 +2,9 @@
 module.exports = function (app, userModel, z, IPinfo) {
 
     var facebookConfig = {
-        clientID     : /*665403380328118, */process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : /*"b9b55d4e78cf1da532d4ea42f19f480a", */process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : /*"/auth/facebook/callback",*/ process.env.FACEBOOK_CALLBACK_URL,
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
         profileFields: ['id', 'displayName', 'name', 'email']
     };
 
