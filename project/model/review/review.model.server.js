@@ -2,7 +2,6 @@ module.exports = function (mongoose, q) {
 
     var ReviewSchema = require('./review.schema.server')(mongoose);
     var ReviewModel = mongoose.model('ReviewModel', ReviewSchema);
-    //mongoose.Promise = q.Promise;
 
 
     var api ={
