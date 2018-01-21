@@ -1,6 +1,6 @@
 # reviewME
 
-A Single page MEAN stack application for creating and maintaining web pages.
+A Single page MEAN stack application for searching and reviewing restaurants based on user location.
 
 How to run:
 
